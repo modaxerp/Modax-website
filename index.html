@@ -14,40 +14,48 @@
             background: linear-gradient(135deg, rgba(0, 120, 212, 0.05) 0%, rgba(0, 120, 212, 0.02) 100%);
             border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; z-index: -1; filter: blur(40px);
             animation: morph 20s infinite alternate ease-in-out;
+            pointer-events: none; /* Ensure it doesn't block clicks */
         }
         @keyframes morph {
             0% { border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; }
             100% { border-radius: 30% 60% 40% 70% / 70% 40% 50% 60%; }
         }
-        .nav-scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 0.5rem 0; }
+        .nav-scrolled { background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 0.25rem 0; }
         .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
+        
+        .nav-link-gradient:hover {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #0078D4, #00B7C3);
+        }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
     <!-- Header -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-6 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center relative z-[101]">
             <div class="flex items-center">
-                <img src="logo.png" alt="MODAX ERP" class="h-16 w-auto object-contain transition-all duration-300" onerror="this.outerHTML='<span class=\'text-2xl font-extrabold tracking-tight text-[#0078D4]\'>MODAX <span class=\'text-[#1E293B]\'>ERP</span></span>'">
+                <img src="logo.png" alt="MODAX ERP" class="h-24 w-auto object-contain transition-all duration-500" onerror="this.outerHTML='<span class=\'text-3xl font-extrabold tracking-tight text-[#0078D4]\'>MODAX <span class=\'text-[#1E293B]\'>ERP</span></span>'">
             </div>
-            <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
-                <a href="#solutions" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Solutions</a>
-                <a href="#industries" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Industries</a>
-                <a href="#innovation" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Innovation</a>
-                <a href="#company" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Company</a>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-bold text-slate-700">
+                <a href="#solutions" class="nav-link-gradient transition-all duration-300 hover:-translate-y-1 block">Solutions</a>
+                <a href="#industries" class="nav-link-gradient transition-all duration-300 hover:-translate-y-1 block">Industries</a>
+                <a href="#innovation" class="nav-link-gradient transition-all duration-300 hover:-translate-y-1 block">Innovation</a>
+                <a href="#company" class="nav-link-gradient transition-all duration-300 hover:-translate-y-1 block">Company</a>
             </div>
             <button class="bg-[#0078D4] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#005a9e] transition-all shadow-lg shadow-blue-500/20 active:scale-95">Book a Consultation</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-gradient">
+    <section class="relative min-h-screen flex items-center pt-32 overflow-hidden hero-gradient">
         <div class="abstract-shape"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl">
                 <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-[10px] font-black text-[#0078D4] mb-8 tracking-[0.15em] uppercase"><span>Elite Microsoft Solutions Partner</span></div>
                 <h1 class="text-6xl md:text-[5.5rem] font-extrabold text-[#1E293B] leading-[1.02] mb-10 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
-                <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl font-normal">Your trusted partner for Microsoft Dynamics 365 Finance and Operations (D365 F&O) and Dynamics 365 Business Central (D365 BC). Bridging the gap between complex operations and seamless efficiency.</p>
+                <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-3xl font-normal">Your trusted partner for Microsoft Dynamics 365 Finance and Operations (D365 F&O) and Dynamics 365 Business Central (D365 BC). Bridging the gap between complex operations and seamless efficiency.</p>
                 <div class="flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-6">
                     <a href="#solutions" class="bg-[#0078D4] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all shadow-2xl shadow-blue-500/30 text-center flex items-center justify-center">Explore Our Solutions</a>
                     <a href="#innovation" class="bg-white text-[#1E293B] border border-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center flex items-center justify-center">Innovation Hub</a>
@@ -60,7 +68,7 @@
     <section id="solutions" class="py-32 bg-[#F8FAFC]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-20 text-center max-w-3xl mx-auto">
-                <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5">Solutions</h2>
+                <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5 text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#00B7C3]">Solutions</h2>
                 <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-8 tracking-tight">Enterprise Strategy & Technology</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -76,7 +84,7 @@
                 </div>
                 <!-- Card 3 -->
                 <div class="bg-white p-10 rounded-2xl shadow-md border-t-4 border-[#0078D4] ring-1 ring-blue-50 transition-all card-hover relative flex flex-col">
-                    <div class="absolute top-0 right-0 bg-[#0078D4] text-white text-[9px] font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-widest">Star Product</div>
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-[#0078D4] to-[#00B7C3] text-white text-[9px] font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-widest">Star Product</div>
                     <h4 class="text-2xl font-bold text-[#1E293B] mb-2">Modax WMS</h4>
                     <h5 class="text-[#0078D4] font-bold text-xs mb-6 uppercase tracking-wider">Embedded Warehouse Management inside BC</h5>
                     <p class="text-slate-600 mb-10 flex-grow leading-relaxed">Seamlessly integrated warehouse logic. No external connectors, just pure efficiency and native data flow.</p>
@@ -93,26 +101,26 @@
                     <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5">Innovation Lab</h2>
                     <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-8 tracking-tight">R&D and Proprietary Technology</h3>
                 </div>
-                <a href="#" class="text-[#0078D4] font-bold text-lg hover:underline transition-all">Browse Our Lab →</a>
+                <a href="#" class="text-[#0078D4] font-bold text-lg hover:text-[#00B7C3] transition-colors">Browse Our Lab →</a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Tech Card 1 -->
-                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-[#0078D4] hover:to-[#00B7C3] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
                     <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Audit Shield</h4>
                     <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Digital evidence for line clearance. Subjectivity eliminated.</p>
                 </div>
                 <!-- Tech Card 2 -->
-                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-[#0078D4] hover:to-[#00B7C3] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
                     <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Variance Killer</h4>
                     <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Real-time consumption tracking to pinpoint operational loss instantly.</p>
                 </div>
                 <!-- Tech Card 3 -->
-                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-[#0078D4] hover:to-[#00B7C3] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
                     <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Inbound Compliance</h4>
                     <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Digital gatekeeper for trailer inspection and receiving.</p>
                 </div>
                 <!-- Tech Card 4 -->
-                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-gradient-to-br hover:from-[#0078D4] hover:to-[#00B7C3] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
                     <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Project AURA</h4>
                     <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Bio-Aesthetic AI & Computer Vision R&D Lab.</p>
                 </div>
@@ -124,10 +132,10 @@
     <footer class="bg-[#1E293B] text-white pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <div>
-                <div class="text-3xl font-extrabold tracking-tight text-[#0078D4] mb-8 uppercase">Modax ERP</div>
+                <div class="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#00B7C3] mb-8 uppercase">Modax ERP</div>
                 <p class="text-slate-400 mb-6">Copyright 2026 Modax Consulting Inc. All Rights Reserved.</p>
             </div>
-            <a href="#" class="text-2xl font-extrabold hover:text-[#0078D4] transition-colors mb-6 tracking-tight">Let's Build the Future</a>
+            <a href="#" class="text-2xl font-extrabold hover:text-[#00B7C3] transition-colors mb-6 tracking-tight">Let's Build the Future</a>
         </div>
     </footer>
     <script>
@@ -136,11 +144,15 @@
             const logo = nav.querySelector('img');
             if (window.scrollY > 40) { 
                 nav.classList.add('nav-scrolled'); 
-                if(logo) logo.classList.replace('h-16', 'h-12');
+                if(logo) {
+                    logo.classList.replace('h-24', 'h-16');
+                }
             }
             else { 
                 nav.classList.remove('nav-scrolled'); 
-                if(logo) logo.classList.replace('h-12', 'h-16');
+                if(logo) {
+                    logo.classList.replace('h-16', 'h-24');
+                }
             }
         });
     </script>

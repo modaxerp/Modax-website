@@ -19,7 +19,7 @@
             0% { border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; }
             100% { border-radius: 30% 60% 40% 70% / 70% 40% 50% 60%; }
         }
-        .nav-scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 0.75rem 0; }
+        .nav-scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 0.5rem 0; }
         .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
     </style>
 </head>
@@ -28,13 +28,13 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <img src="logo.png" alt="MODAX ERP" class="h-10 w-auto object-contain" onerror="this.outerHTML='<span class=\'text-2xl font-extrabold tracking-tight text-[#0078D4]\'>MODAX <span class=\'text-[#1E293B]\'>ERP</span></span>'">
+                <img src="logo.png" alt="MODAX ERP" class="h-16 w-auto object-contain transition-all duration-300" onerror="this.outerHTML='<span class=\'text-2xl font-extrabold tracking-tight text-[#0078D4]\'>MODAX <span class=\'text-[#1E293B]\'>ERP</span></span>'">
             </div>
             <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
-                <a href="#solutions" class="hover:text-[#0078D4] transition-colors">Solutions</a>
-                <a href="#industries" class="hover:text-[#0078D4] transition-colors">Industries</a>
-                <a href="#innovation" class="hover:text-[#0078D4] transition-colors">Innovation</a>
-                <a href="#company" class="hover:text-[#0078D4] transition-colors">Company</a>
+                <a href="#solutions" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Solutions</a>
+                <a href="#industries" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Industries</a>
+                <a href="#innovation" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Innovation</a>
+                <a href="#company" class="transition-all duration-300 hover:text-[#0078D4] hover:-translate-y-1 block">Company</a>
             </div>
             <button class="bg-[#0078D4] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#005a9e] transition-all shadow-lg shadow-blue-500/20 active:scale-95">Book a Consultation</button>
         </div>
@@ -47,7 +47,7 @@
             <div class="max-w-3xl">
                 <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-[10px] font-black text-[#0078D4] mb-8 tracking-[0.15em] uppercase"><span>Elite Microsoft Solutions Partner</span></div>
                 <h1 class="text-6xl md:text-[5.5rem] font-extrabold text-[#1E293B] leading-[1.02] mb-10 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
-                <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl font-normal">Your trusted partner for Dynamics 365 F&O and Business Central. Bridging the gap between complex operations and seamless efficiency.</p>
+                <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl font-normal">Your trusted partner for Microsoft Dynamics 365 Finance and Operations (D365 F&O) and Dynamics 365 Business Central (D365 BC). Bridging the gap between complex operations and seamless efficiency.</p>
                 <div class="flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-6">
                     <a href="#solutions" class="bg-[#0078D4] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all shadow-2xl shadow-blue-500/30 text-center flex items-center justify-center">Explore Our Solutions</a>
                     <a href="#innovation" class="bg-white text-[#1E293B] border border-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center flex items-center justify-center">Innovation Hub</a>
@@ -93,7 +93,7 @@
                     <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5">Innovation Lab</h2>
                     <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-8 tracking-tight">R&D and Proprietary Technology</h3>
                 </div>
-                <a href="#" class="text-[#0078D4] font-bold text-lg">Browse Our Lab →</a>
+                <a href="#" class="text-[#0078D4] font-bold text-lg hover:underline transition-all">Browse Our Lab →</a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Tech Card 1 -->
@@ -133,8 +133,15 @@
     <script>
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 40) { nav.classList.add('nav-scrolled'); }
-            else { nav.classList.remove('nav-scrolled'); }
+            const logo = nav.querySelector('img');
+            if (window.scrollY > 40) { 
+                nav.classList.add('nav-scrolled'); 
+                if(logo) logo.classList.replace('h-16', 'h-12');
+            }
+            else { 
+                nav.classList.remove('nav-scrolled'); 
+                if(logo) logo.classList.replace('h-12', 'h-16');
+            }
         });
     </script>
 </body>

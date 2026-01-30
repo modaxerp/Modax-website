@@ -10,7 +10,7 @@
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         
         /* Fixed Header Spacing Fix */
-        .content-top-spacing { padding-top: 14rem; } /* pt-56 equivalent to match h-48 + padding */
+        .content-top-spacing { padding-top: 14rem; } 
 
         .hero-gradient { background: radial-gradient(circle at 75% 50%, rgba(0, 120, 212, 0.08) 0%, rgba(255, 255, 255, 0) 60%); }
         
@@ -27,7 +27,7 @@
             100% { border-radius: 30% 60% 40% 70% / 70% 40% 50% 60%; }
         }
 
-        /* Nav Scrolled State - Subtle for Light Mode */
+        /* Nav Scrolled State */
         .nav-scrolled { 
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
             padding-top: 0.25rem; 
@@ -36,7 +36,6 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
         }
         
-        /* Custom Hover Class for Scale & Gradient */
         .nav-wow-hover {
             display: block;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,7 +64,6 @@
             letter-spacing: 0.1em;
         }
 
-        /* Bento Grid Specifics */
         .bento-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -73,42 +71,46 @@
             transform: translateX(6px);
         }
 
-        /* Glassmorphism & Glow for Dark Mode Innovation Hub */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
+        /* Innovation Card Custom Hover Glow */
+        .innovation-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-card:hover {
-            border-color: #00B7C3;
-            box-shadow: 0 0 25px rgba(0, 183, 195, 0.2);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-8px);
+        .innovation-card:hover {
+            box-shadow: inset 0 0 30px rgba(34, 211, 238, 0.05), 0 20px 50px -12px rgba(0, 0, 0, 0.5);
         }
+
+        /* Scroll Reveal Animations (Apple-Style) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
-    <!-- Header/Navigation (Light Mode Header) -->
+    <!-- Header/Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 py-4 px-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="flex items-center">
-                <!-- Massive Logo (h-48) - Resets brightness/invert for Light Header -->
                 <img id="main-logo" src="logo.png" alt="MODAX ERP" class="h-48 w-auto object-contain transition-all duration-500 origin-left" onerror="this.outerHTML='<span class=\'text-4xl font-black tracking-tighter text-[#0078D4]\'>MODAX <span class=\'text-slate-900\'>ERP</span></span>'">
             </div>
             
-            <!-- Nav Links (Dark Navy Blue for visibility on white) -->
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900">
-                <!-- MEGA MENU: SOLUTIONS (Dark Mode Dropdown) -->
+                <!-- MEGA MENU: SOLUTIONS -->
                 <div class="group h-full flex items-center">
                     <a href="#solutions" class="nav-wow-hover py-6 cursor-pointer relative z-[10000]">Solutions</a>
-                    
-                    <!-- THE PREMIUM HEAVY SMOKED GLASS MENU (Retained Dark) -->
                     <div class="fixed left-0 top-full w-screen bg-[#020617]/95 backdrop-blur-2xl border-t border-white/10 shadow-2xl transform origin-top scale-y-0 opacity-0 invisible group-hover:scale-y-100 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[9998]">
                         <div class="max-w-7xl mx-auto px-6 py-20">
                             <div class="grid grid-cols-3 gap-10">
-                                
-                                <!-- Column 1: F&O -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
@@ -121,8 +123,6 @@
                                         <p class="text-slate-400 font-medium leading-relaxed text-lg">Enterprise-grade strategy for global manufacturing and distribution networks.</p>
                                     </div>
                                 </a>
-
-                                <!-- Column 2: BC -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -135,8 +135,6 @@
                                         <p class="text-slate-400 font-medium leading-relaxed text-lg">Streamline your entire business process with an agile cloud-native ecosystem.</p>
                                     </div>
                                 </a>
-
-                                <!-- Column 3: Modax WMS (Star) -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 hover:border-[#00B7C3]/40 transition-all duration-300 shadow-2xl">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.1] text-[#00B7C3] transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
@@ -152,7 +150,6 @@
                                         <p class="text-slate-200 font-medium leading-relaxed text-lg">Proprietary warehouse intelligence embedded for native performance.</p>
                                     </div>
                                 </a>
-
                             </div>
                             <div class="mt-16 pt-10 border-t border-white/5 flex justify-between items-center text-white/50">
                                 <span class="text-xs font-black uppercase tracking-[0.4em]">Integrated Intelligence • 2026 Edition</span>
@@ -165,16 +162,12 @@
                     </div>
                 </div>
 
-                <!-- MEGA MENU: INDUSTRIES (Dark Mode Dropdown) -->
+                <!-- MEGA MENU: INDUSTRIES -->
                 <div class="group h-full flex items-center">
                     <a href="#industries" class="nav-wow-hover py-6 cursor-pointer relative z-[10000]">Industries</a>
-                    
-                    <!-- INDUSTRIES DROP DOWN (Retained Smoked Glass Dark) -->
                     <div class="fixed left-0 top-full w-screen bg-[#020617]/95 backdrop-blur-2xl border-t border-white/10 shadow-2xl transform origin-top scale-y-0 opacity-0 invisible group-hover:scale-y-100 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[9998]">
                         <div class="max-w-7xl mx-auto px-6 py-20">
                             <div class="grid grid-cols-3 gap-10">
-                                
-                                <!-- Column 1: Manufacturing -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M19.437 15.869c.758-1.33 1.063-2.581.945-3.852-.175-1.897-1.154-3.531-2.761-4.604l-.698 1.458c.874.582 1.434 1.442 1.576 2.457.065.703-.102 1.412-.472 2.062l1.41 1.479zm-4.305 4.341c1.321.764 2.564 1.077 3.824.969 1.884-.162 3.518-1.127 4.604-2.716l-1.47-.687c-.59.882-1.46 1.451-2.485 1.54-.712.061-1.43-.095-2.087-.456l-.386 1.35zm-5.132-15.148c-1.334-.746-2.593-1.037-3.864-.906-1.897.193-3.518 1.192-4.573 2.812l1.446.737c.563-.88 1.422-1.424 2.428-1.526.697-.071 1.402.086 2.043.444l.52-1.561zm13.13 14.15l-1.47-.687-.417 1.48c.594.316.96.837 1.033 1.482.08.705-.18 1.391-.703 1.858l1.041 1.092c1.01-.89 1.51-2.186 1.36-3.515-.125-1.112-.734-2.072-1.637-2.71zM4.192 11.23l1.446.737.472-1.464c-.33-.586-.33-1.274 0-1.86.347-.614.981-1 1.661-1.026l.162-1.59c-1.272.04-2.435.751-3.08 1.89-.646 1.14-.646 2.43 0 3.57l-1.107 1.743zm4.562 8.428l-.386 1.35c-1.318-.755-2.261-1.928-2.618-3.328-.344-1.346-.013-2.693.858-3.7l1.041 1.092c-.524.61-.734 1.442-.516 2.292.217.85.787 1.55 1.576 2.01l.045.284z"></path></svg>
@@ -187,8 +180,6 @@
                                         <p class="text-slate-400 font-medium leading-relaxed text-lg">Streamline production cycles and shop floor control with real-time visibility.</p>
                                     </div>
                                 </a>
-
-                                <!-- Column 2: Retail & Commerce -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
@@ -201,8 +192,6 @@
                                         <p class="text-slate-400 font-medium leading-relaxed text-lg">Unified commerce across all channels, from store-front to supply chain.</p>
                                     </div>
                                 </a>
-
-                                <!-- Column 3: Distribution & WMS -->
                                 <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 hover:border-[#00B7C3]/40 transition-all duration-300 shadow-2xl">
                                     <div class="absolute -right-6 -bottom-6 opacity-[0.08] text-[#00B7C3] transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
                                         <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"></path></svg>
@@ -238,24 +227,16 @@
         <div class="abstract-shape"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div class="max-w-4xl">
-                <!-- Elite Shimmer Badge -->
                 <div class="inline-flex items-center space-x-2 bg-white border border-slate-100 px-6 py-2 rounded-full mb-10 shadow-sm">
                     <span class="animate-shine text-[11px] uppercase font-bold tracking-[0.1em]">Elite Microsoft Solutions Partner</span>
                 </div>
-                
                 <h1 class="text-6xl md:text-[5.5rem] font-extrabold text-[#1E293B] leading-[1.02] mb-12 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
-                
-                <!-- SEO Optimized Subhead -->
                 <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-14 max-w-3xl font-normal">Your trusted Microsoft Dynamics partner for Microsoft Dynamics 365 Finance and Operations (D365 F&O) and Dynamics 365 Business Central (D365 BC). Bridging the gap between complex operations and seamless efficiency.</p>
-                
                 <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8">
-                    <!-- High-Tech Primary Button -->
                     <a href="#solutions" class="group bg-gradient-to-r from-[#0F172A] to-[#0078D4] text-white px-12 py-6 rounded-full font-bold text-xl shadow-[0_0_20px_rgba(0,120,212,0.4)] hover:shadow-[0_0_35px_rgba(0,120,212,0.6)] hover:-translate-y-1 transition-all duration-300 text-center flex items-center justify-center">
                         <span>Explore Our Solutions</span>
                         <span class="ml-3 transition-transform duration-300 group-hover:translate-x-1 font-bold text-2xl">→</span>
                     </a>
-                    
-                    <!-- High-Tech Secondary Button -->
                     <a href="#innovation" class="bg-white text-[#0078D4] border-2 border-[#0078D4] px-12 py-6 rounded-full font-bold text-xl hover:bg-blue-50 hover:border-[#00B7C3] hover:text-[#00B7C3] transition-all duration-300 text-center flex items-center justify-center">
                         <span class="mr-3 filter drop-shadow-sm">✨</span>
                         <span>Innovation Hub</span>
@@ -268,14 +249,14 @@
     <!-- Solutions Bento Grid -->
     <section id="solutions" class="py-32 bg-[#F8FAFC]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-24 text-center max-w-3xl mx-auto">
+            <div class="mb-24 text-center max-w-3xl mx-auto reveal">
                 <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#0f2167] to-[#00B7C3]">Solutions</h2>
                 <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-10 tracking-tight">Enterprise Strategy & Technology</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group">
+                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group reveal delay-100">
                     <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                     </div>
@@ -285,9 +266,8 @@
                         Explore Capability <span class="ml-2 arrow-move transition-transform duration-300">→</span>
                     </a>
                 </div>
-
                 <!-- Card 2 -->
-                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group">
+                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group reveal delay-200">
                     <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2zm0 0l7 7m0 0l7-7m-7 7v8" /></svg>
                     </div>
@@ -297,9 +277,8 @@
                         Explore Capability <span class="ml-2 arrow-move transition-transform duration-300">→</span>
                     </a>
                 </div>
-
                 <!-- Card 3 -->
-                <div class="md:col-span-2 bg-[#F0F7FF] p-12 md:p-16 rounded-[3rem] border-2 border-blue-100 bento-card flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+                <div class="md:col-span-2 bg-[#F0F7FF] p-12 md:p-16 rounded-[3rem] border-2 border-blue-100 bento-card flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden reveal delay-300">
                     <div class="absolute top-0 right-0 bg-gradient-to-r from-[#0f2167] to-[#00B7C3] text-white text-[11px] font-black px-10 py-3 rounded-bl-3xl uppercase tracking-[0.2em] z-10">Featured Product</div>
                     <div class="max-w-2xl relative z-10">
                         <div class="w-16 h-16 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-sm text-[#0078D4]">
@@ -317,40 +296,79 @@
         </div>
     </section>
 
-    <!-- Innovation Hub -->
-    <section id="innovation" class="py-32 bg-[#0F172A] relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Innovation Hub: Redesigned Sci-Fi Lab -->
+    <section id="innovation" class="py-40 bg-[#0F172A] relative overflow-hidden">
+        <!-- Dashboard Ambient Glows -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-28 text-center md:text-left">
-                <div class="max-w-2xl">
-                    <h2 class="text-sm font-black text-[#00B7C3] tracking-[0.4em] uppercase mb-6">Innovation Lab</h2>
-                    <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-10 tracking-tight">R&D and Proprietary Technology</h3>
-                </div>
-                <a href="#" class="text-[#00B7C3] font-black text-xl hover:text-white transition-all transform hover:translate-x-2">Browse Our Lab →</a>
+            <div class="text-center mb-28 reveal">
+                <h2 class="text-sm font-black text-cyan-400 tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
+                <h3 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">The Innovation Hub</h3>
+                <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Where Modax R&D meets real-world efficiency. Pioneering next-gen supply chain logic.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
-                    <h4 class="text-2xl font-bold text-white mb-4">Audit Shield</h4>
-                    <p class="text-slate-400 font-medium">Digital evidence for line clearance. Subjectivity eliminated.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Card 1: Audit Shield -->
+                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-100">
+                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h4 class="text-3xl font-black text-white mb-6">Audit Shield</h4>
+                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Digital evidence for line clearance. Subjectivity eliminated through proprietary verification algorithms that ensure absolute compliance.</p>
+                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Protocol 4.0 Active</span>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    </div>
                 </div>
-                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
-                    <h4 class="text-2xl font-bold text-white mb-4">Variance Killer</h4>
-                    <p class="text-slate-400 font-medium">Real-time "Actual vs Theoretical" consumption tracking.</p>
+
+                <!-- Card 2: Variance Killer -->
+                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-200">
+                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h4 class="text-3xl font-black text-white mb-6">Variance Killer</h4>
+                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Real-time "Actual vs Theoretical" consumption tracking. Locate operational leaks and material loss the moment they occur on the shop floor.</p>
+                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Zero-Loss Syncing</span>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    </div>
                 </div>
-                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
-                    <h4 class="text-2xl font-bold text-white mb-4">Inbound Compliance</h4>
-                    <p class="text-slate-400 font-medium">Digital gatekeeper for trailer inspection and receiving.</p>
+
+                <!-- Card 3: Inbound Compliance -->
+                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-300">
+                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h4 class="text-3xl font-black text-white mb-6">Inbound Compliance</h4>
+                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Digital gatekeeper for trailer inspection and receiving. Integrated OCR and computer vision validate Every shipment against the digital twin.</p>
+                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Gate-Keeper AI 2.0</span>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    </div>
                 </div>
-                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
-                    <h4 class="text-2xl font-bold text-white mb-4">Project AURA</h4>
-                    <p class="text-slate-400 font-medium">Bio-Aesthetic AI & Computer Vision R&D Lab.</p>
+
+                <!-- Card 4: Project Aura -->
+                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-400">
+                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-3xl font-black text-white mb-6">Project Aura</h4>
+                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Bio-Aesthetic AI & Computer Vision Lab. We're engineering cameras that "understand" aesthetics and quality for high-end luxury manufacturing.</p>
+                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Vision Core Online</span>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1E293B] text-white pt-32 pb-16 border-t border-slate-800">
+    <footer class="bg-[#020617] text-white pt-32 pb-16">
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <div class="mb-12 md:mb-0">
                 <div class="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#00B7C3] mb-10 uppercase">Modax ERP</div>
@@ -362,6 +380,7 @@
     </footer>
 
     <script>
+        // Navbar scroll logic
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
             const logo = document.getElementById('main-logo');
@@ -377,6 +396,26 @@
                     logo.classList.replace('h-20', 'h-48');
                 }
             }
+        });
+
+        // Intersection Observer for Scroll Reveal Animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once animation is done, we can stop observing if we want it to only trigger once
+                    // revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
         });
     </script>
 </body>

@@ -35,6 +35,22 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* Elite Shine Effect */
+        @keyframes shine {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+        .animate-shine {
+            background: linear-gradient(to right, #1E293B 20%, #0078D4 40%, #FFD700 50%, #0078D4 60%, #1E293B 80%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
@@ -65,9 +81,16 @@
         <div class="abstract-shape"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div class="max-w-4xl">
-                <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-[10px] font-black text-[#0078D4] mb-10 tracking-[0.2em] uppercase"><span>Elite Microsoft Solutions Partner</span></div>
+                <!-- Elite Shimmer Badge -->
+                <div class="inline-flex items-center space-x-2 bg-white border border-slate-100 px-6 py-2 rounded-full mb-10 shadow-sm">
+                    <span class="animate-shine text-[11px] uppercase">Elite Microsoft Solutions Partner</span>
+                </div>
+                
                 <h1 class="text-6xl md:text-[5.5rem] font-extrabold text-[#1E293B] leading-[1.02] mb-12 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
+                
+                <!-- SEO Optimized Subhead -->
                 <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-14 max-w-3xl font-normal">Your trusted Microsoft Dynamics partner for Microsoft Dynamics 365 Finance and Operations (D365 F&O) and Dynamics 365 Business Central (D365 BC). Bridging the gap between complex operations and seamless efficiency.</p>
+                
                 <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8">
                     <a href="#solutions" class="bg-[#0078D4] text-white px-12 py-6 rounded-full font-bold text-xl hover:bg-[#005a9e] transition-all shadow-2xl shadow-blue-500/40 text-center flex items-center justify-center">Explore Our Solutions</a>
                     <a href="#innovation" class="bg-white text-[#1E293B] border-2 border-slate-100 px-12 py-6 rounded-full font-bold text-xl hover:bg-slate-50 transition-all text-center flex items-center justify-center">Innovation Hub</a>
@@ -151,14 +174,12 @@
             if (window.scrollY > 50) { 
                 nav.classList.add('nav-scrolled'); 
                 if(logo) {
-                    // Reduce logo size significantly on scroll for usability
                     logo.classList.replace('h-48', 'h-24');
                 }
             }
             else { 
                 nav.classList.remove('nav-scrolled'); 
                 if(logo) {
-                    // Restore massive logo when at top
                     logo.classList.replace('h-24', 'h-48');
                 }
             }

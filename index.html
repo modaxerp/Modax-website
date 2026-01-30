@@ -94,6 +94,16 @@
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
         .delay-400 { transition-delay: 400ms; }
+
+        /* Modal Transitions */
+        #legalModal {
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+        #legalModal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            display: flex; /* keep flex but hide opacity */
+        }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
@@ -334,7 +344,7 @@
                     </div>
                     <h4 class="text-3xl font-black text-white mb-6">Inbound Compliance</h4>
                     <p class="text-slate-400 text-lg leading-relaxed font-medium">Digital gatekeeper for trailer inspection and receiving. Integrated OCR and computer vision validate every shipment against the digital twin.</p>
-                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class=\"mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500\">
                         <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Gate-Keeper AI 2.0</span>
                         <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
                     </div>
@@ -390,10 +400,11 @@
                     <div>
                         <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Legal</h4>
                         <ul class="space-y-5 text-md text-slate-400 font-bold">
-                            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">Accessibility</a></li>
+                            <!-- Activated legal links with JS -->
+                            <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="javascript:void(0)" onclick="openLegalModal('terms')" class="hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="javascript:void(0)" onclick="openLegalModal('cookies')" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                            <li><a href="javascript:void(0)" onclick="openLegalModal('accessibility')" class="hover:text-white transition-colors">Accessibility</a></li>
                         </ul>
                     </div>
                 </div>
@@ -412,7 +423,94 @@
         </div>
     </footer>
 
+    <!-- LEGAL MODAL OVERLAY -->
+    <div id="legalModal" class="fixed inset-0 z-[10000] hidden flex items-center justify-center p-6 bg-[#020617]/40 backdrop-blur-xl">
+        <div class="bg-[#020617]/90 border border-white/10 w-full max-w-2xl rounded-[2.5rem] overflow-hidden shadow-2xl relative">
+            <button onclick="closeLegalModal()" class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="p-12 md:p-16">
+                <h2 id="modalTitle" class="text-4xl font-black text-white mb-8 tracking-tight">Legal Notice</h2>
+                <div id="modalContent" class="text-slate-300 text-lg leading-relaxed font-medium space-y-6 max-h-[60vh] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-white/10">
+                    <!-- Dynamic content will load here -->
+                </div>
+                <div class="mt-12">
+                    <button onclick="closeLegalModal()" class="bg-[#0078D4] text-white px-10 py-4 rounded-full font-bold hover:bg-[#005a9e] transition-all">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Legal Content Data
+        const legalData = {
+            privacy: {
+                title: "Privacy Policy",
+                content: `
+                    <p>This policy applies to Modax Consulting Inc. (Canada), Modax Consulting Ltd. (UK), and Modax Consulting LLC (USA), collectively referred to as 'Modax'. We represent a global commitment to data security.</p>
+                    <ul class="list-disc ml-6 space-y-3">
+                        <li><strong>Canada:</strong> We comply with PIPEDA for all Canadian operations.</li>
+                        <li><strong>UK/Europe:</strong> We adhere to UK GDPR & Data Protection Act 2018 standards.</li>
+                        <li><strong>USA:</strong> We respect relevant state-level privacy regulations.</li>
+                    </ul>
+                    <p><strong>Data Usage:</strong> Operational data processed via our Innovation Hub tools (Audit Shield, Variance Killer) remains the strict property of the client. We do not sell data.</p>
+                `
+            },
+            terms: {
+                title: "Terms of Service",
+                content: `
+                    <p>By accessing Modax ERP services, you agree to these terms. 'Service' implies engagement with the specific Modax entity applicable to your region (Inc., Ltd., or LLC).</p>
+                    <ul class="list-disc ml-6 space-y-3">
+                        <li><strong>Intellectual Property:</strong> All proprietary software, including 'Modax WMS', are intellectual property of Modax Consulting Inc. (Global HQ).</li>
+                        <li><strong>Liability:</strong> Services are provided on an 'as-is' basis subject to the Service Level Agreements (SLA) defined in your specific client contract.</li>
+                    </ul>
+                `
+            },
+            cookies: {
+                title: "Cookie Policy",
+                content: `
+                    <p>We use essential cookies for portal security and analytical cookies to optimize global user experience. By continuing to use our services, you consent to our use of cookies in accordance with GDPR and CCPA standards.</p>
+                    <p>Essential cookies are required for platform stability and cannot be disabled. Analytical cookies help us understand user interaction across our Global Manufacturing and Retail dashboards.</p>
+                `
+            },
+            accessibility: {
+                title: "Accessibility Statement",
+                content: `
+                    <p>Modax is committed to digital inclusivity, adhering to AODA (Ontario) and applicable international accessibility standards to ensure our tools are usable by everyone.</p>
+                    <p>We continuously audit our Innovation Hub interfaces to maintain high WCAG standards for all enterprise users across Canada, the UK, and the USA.</p>
+                `
+            }
+        };
+
+        function openLegalModal(type) {
+            const modal = document.getElementById('legalModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            if (legalData[type]) {
+                title.innerText = legalData[type].title;
+                content.innerHTML = legalData[type].content;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            }
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legalModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scroll
+        }
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLegalModal();
+        });
+
+        // Close modal on click outside
+        document.getElementById('legalModal').addEventListener('click', (e) => {
+            if (e.target.id === 'legalModal') closeLegalModal();
+        });
+
         // Navbar scroll logic - Keeps the huge h-48 logo as base but handles scrolling state
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');

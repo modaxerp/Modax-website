@@ -21,7 +21,6 @@
             100% { border-radius: 30% 60% 40% 70% / 70% 40% 50% 60%; }
         }
         .nav-scrolled { background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1); padding: 0.1rem 0; }
-        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
         
         /* Custom Hover Class for Scale & Gradient */
         .nav-wow-hover {
@@ -50,6 +49,28 @@
             animation: shine 4s linear infinite;
             font-weight: 800;
             letter-spacing: 0.1em;
+        }
+
+        /* Bento Grid Specifics */
+        .bento-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover .arrow-move {
+            transform: translateX(6px);
+        }
+
+        /* Glassmorphism & Glow for Dark Mode Innovation Hub */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            border-color: #00B7C3;
+            box-shadow: 0 0 25px rgba(0, 183, 195, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-8px);
         }
     </style>
 </head>
@@ -99,69 +120,128 @@
         </div>
     </section>
 
-    <!-- Solutions Grid -->
+    <!-- Solutions Bento Grid -->
     <section id="solutions" class="py-32 bg-[#F8FAFC]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-24 text-center max-w-3xl mx-auto">
                 <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#0f2167] to-[#00B7C3]">Solutions</h2>
                 <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-10 tracking-tight">Enterprise Strategy & Technology</h3>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="bg-white p-12 rounded-3xl shadow-sm border-t-8 border-[#0078D4] transition-all card-hover flex flex-col">
-                    <h4 class="text-2xl font-bold text-[#1E293B] mb-6">Dynamics 365 F&O</h4>
-                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed text-lg">Enterprise-grade resource planning for complex global operations and multi-entity management.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Top Row: F&O -->
+                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    </div>
+                    <h4 class="text-3xl font-bold text-[#1E293B] mb-6">Dynamics 365 F&O</h4>
+                    <p class="text-slate-600 mb-10 leading-relaxed text-lg">Enterprise-grade resource planning for complex global operations and multi-entity management.</p>
+                    <a href="#" class="inline-flex items-center text-[#0078D4] font-bold text-lg group-hover:underline">
+                        Explore Capability <span class="ml-2 arrow-move transition-transform duration-300">→</span>
+                    </a>
                 </div>
-                <div class="bg-white p-12 rounded-3xl shadow-sm border-t-8 border-[#0078D4] transition-all card-hover flex flex-col">
-                    <h4 class="text-2xl font-bold text-[#1E293B] mb-6">Dynamics 365 Business Central</h4>
-                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed text-lg">Agile, cloud-native ERP solutions for growing businesses looking for rapid digital maturity.</p>
+
+                <!-- Top Row: Business Central -->
+                <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2zm0 0l7 7m0 0l7-7m-7 7v8" /></svg>
+                    </div>
+                    <h4 class="text-3xl font-bold text-[#1E293B] mb-6">Dynamics 365 Business Central</h4>
+                    <p class="text-slate-600 mb-10 leading-relaxed text-lg">Agile, cloud-native ERP solutions for growing businesses looking for rapid digital maturity.</p>
+                    <a href="#" class="inline-flex items-center text-[#0078D4] font-bold text-lg group-hover:underline">
+                        Explore Capability <span class="ml-2 arrow-move transition-transform duration-300">→</span>
+                    </a>
                 </div>
-                <div class="bg-white p-12 rounded-3xl shadow-md border-t-8 border-[#0078D4] ring-1 ring-blue-50 transition-all card-hover relative flex flex-col">
-                    <div class="absolute top-0 right-0 bg-gradient-to-r from-[#0f2167] to-[#00B7C3] text-white text-[10px] font-black px-6 py-2 rounded-bl-2xl uppercase tracking-widest">Star Product</div>
-                    <h4 class="text-2xl font-bold text-[#1E293B] mb-3">Modax WMS</h4>
-                    <h5 class="text-[#0078D4] font-black text-xs mb-8 uppercase tracking-widest">Embedded Warehouse Management inside BC</h5>
-                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed text-lg">Seamlessly integrated warehouse logic. No external connectors, just pure efficiency and native data flow.</p>
+
+                <!-- Bottom Row: Modax WMS (Full Width) -->
+                <div class="md:col-span-2 bg-[#F0F7FF] p-12 md:p-16 rounded-[3rem] border-2 border-blue-100 bento-card flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-[#0f2167] to-[#00B7C3] text-white text-[11px] font-black px-10 py-3 rounded-bl-3xl uppercase tracking-[0.2em] z-10">Featured Product</div>
+                    
+                    <div class="max-w-2xl relative z-10">
+                        <div class="w-16 h-16 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-sm text-[#0078D4]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                        </div>
+                        <h4 class="text-4xl font-extrabold text-[#1E293B] mb-4">Modax WMS</h4>
+                        <h5 class="text-[#0078D4] font-black text-sm mb-6 uppercase tracking-widest">Embedded Warehouse Management inside BC</h5>
+                        <p class="text-slate-600 mb-10 leading-relaxed text-xl">Embedded Warehouse Management. No external connectors, just pure efficiency inside Business Central. Real-time data synchronization with zero latency.</p>
+                        <button class="bg-[#0078D4] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/30">
+                            See WMS in Action
+                        </button>
+                    </div>
+
+                    <div class="hidden md:block w-1/3 relative">
+                        <div class="w-64 h-64 bg-white/50 rounded-full blur-3xl absolute -z-10 animate-pulse"></div>
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto opacity-20">
+                            <path fill="#0078D4" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90.1,-16.3,88.5,-0.9C86.9,14.5,81.1,29,72.2,41.4C63.3,53.8,51.4,64.1,37.8,71.4C24.2,78.7,9,83,0.5,82.1C-8,81.2,-16,75,-25,69C-34,63,-44,57.2,-53.4,49.1C-62.8,41,-71.6,30.6,-77.1,18.4C-82.6,6.2,-84.8,-7.8,-81.1,-20.5C-77.4,-33.2,-67.8,-44.6,-56.3,-52.9C-44.8,-61.2,-31.4,-66.4,-18.4,-72.6C-5.4,-78.8,7.3,-86,22.7,-85.2C38.1,-84.4,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Innovation Hub -->
-    <section id="innovation" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Innovation Hub (High-Tech Zone) -->
+    <section id="innovation" class="py-32 bg-[#0F172A] relative overflow-hidden">
+        <!-- Subtle Glow Background -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-28 space-y-8 md:space-y-0 text-center md:text-left">
                 <div class="max-w-2xl">
-                    <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Innovation Lab</h2>
-                    <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-10 tracking-tight">R&D and Proprietary Technology</h3>
+                    <h2 class="text-sm font-black text-[#00B7C3] tracking-[0.4em] uppercase mb-6">Innovation Lab</h2>
+                    <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-10 tracking-tight">R&D and Proprietary Technology</h3>
+                    <p class="text-slate-400 text-lg">Pushing the boundaries of what's possible with AI and Computer Vision in the supply chain.</p>
                 </div>
-                <a href="#" class="text-[#0078D4] font-black text-xl hover:text-[#00B7C3] transition-all transform hover:translate-x-2">Browse Our Lab →</a>
+                <a href="#" class="text-[#00B7C3] font-black text-xl hover:text-white transition-all transform hover:translate-x-2">Browse Our Lab →</a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div class="group p-12 border border-slate-100 rounded-[2.5rem] bg-white hover:bg-gradient-to-br hover:from-[#0f2167] hover:to-[#00B7C3] transition-all duration-700 transform hover:-translate-y-4 hover:shadow-3xl">
-                    <h4 class="text-2xl font-bold text-[#1E293B] group-hover:text-white mb-6 transition-colors">Audit Shield</h4>
-                    <p class="text-slate-600 group-hover:text-white/90 transition-colors leading-relaxed text-base font-medium">Digital evidence for line clearance. Subjectivity eliminated.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tech Card 1: Audit Shield -->
+                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[#00B7C3]/10 group-hover:border-[#00B7C3]/20 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-[#00B7C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Audit Shield</h4>
+                    <p class="text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed font-medium mb-6">Digital evidence for line clearance. Subjectivity eliminated through real-time verification.</p>
                 </div>
-                <div class="group p-12 border border-slate-100 rounded-[2.5rem] bg-white hover:bg-gradient-to-br hover:from-[#0f2167] hover:to-[#00B7C3] transition-all duration-700 transform hover:-translate-y-4 hover:shadow-3xl">
-                    <h4 class="text-2xl font-bold text-[#1E293B] group-hover:text-white mb-6 transition-colors">Variance Killer</h4>
-                    <p class="text-slate-600 group-hover:text-white/90 transition-colors leading-relaxed text-base font-medium">Real-time consumption tracking to pinpoint operational loss instantly.</p>
+
+                <!-- Tech Card 2: Variance Killer -->
+                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[#00B7C3]/10 group-hover:border-[#00B7C3]/20 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-[#00B7C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Variance Killer</h4>
+                    <p class="text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed font-medium mb-6">Real-time consumption tracking to pinpoint operational loss instantly. Actual vs Theoretical visibility.</p>
                 </div>
-                <div class="group p-12 border border-slate-100 rounded-[2.5rem] bg-white hover:bg-gradient-to-br hover:from-[#0f2167] hover:to-[#00B7C3] transition-all duration-700 transform hover:-translate-y-4 hover:shadow-3xl">
-                    <h4 class="text-2xl font-bold text-[#1E293B] group-hover:text-white mb-6 transition-colors">Inbound Compliance</h4>
-                    <p class="text-slate-600 group-hover:text-white/90 transition-colors leading-relaxed text-base font-medium">Digital gatekeeper for trailer inspection and receiving.</p>
+
+                <!-- Tech Card 3: Inbound Compliance -->
+                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[#00B7C3]/10 group-hover:border-[#00B7C3]/20 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-[#00B7C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Inbound Compliance</h4>
+                    <p class="text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed font-medium mb-6">Digital gatekeeper for trailer inspection and receiving. Automated validation protocols.</p>
                 </div>
-                <div class="group p-12 border border-slate-100 rounded-[2.5rem] bg-white hover:bg-gradient-to-br hover:from-[#0f2167] hover:to-[#00B7C3] transition-all duration-700 transform hover:-translate-y-4 hover:shadow-3xl">
-                    <h4 class="text-2xl font-bold text-[#1E293B] group-hover:text-white mb-6 transition-colors">Project AURA</h4>
-                    <p class="text-slate-600 group-hover:text-white/90 transition-colors leading-relaxed text-base font-medium">Bio-Aesthetic AI & Computer Vision R&D Lab.</p>
+
+                <!-- Tech Card 4: Project AURA -->
+                <div class="glass-card group p-10 rounded-[2.5rem] flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-[#00B7C3]/10 group-hover:border-[#00B7C3]/20 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-[#00B7C3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Project AURA</h4>
+                    <p class="text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed font-medium mb-6">Bio-Aesthetic AI & Computer Vision R&D Lab. Visual inspection for high-stakes manufacturing.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1E293B] text-white pt-32 pb-16">
+    <footer class="bg-[#1E293B] text-white pt-32 pb-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
             <div class="mb-12 md:mb-0">
                 <div class="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#00B7C3] mb-10 uppercase">Modax ERP</div>
                 <p class="text-slate-400 mb-6 font-medium">Copyright 2026 Modax Consulting Inc. All Rights Reserved.</p>
+                <p class="text-slate-500 text-sm">Mississauga, Ontario, Canada</p>
             </div>
             <a href="#" class="text-3xl font-black hover:text-[#00B7C3] transition-all transform hover:scale-105 tracking-tight">Let's Build the Future</a>
         </div>

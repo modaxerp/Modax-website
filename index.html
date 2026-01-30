@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,38 +7,135 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: radial-gradient(circle at 75% 50%, rgba(0, 120, 212, 0.08) 0%, rgba(255, 255, 255, 0) 60%); }
+        .abstract-shape {
+            position: absolute; right: -5%; top: 15%; width: 45%; height: 70%;
+            background: linear-gradient(135deg, rgba(0, 120, 212, 0.05) 0%, rgba(0, 120, 212, 0.02) 100%);
+            border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; z-index: -1; filter: blur(40px);
+            animation: morph 20s infinite alternate ease-in-out;
         }
-        .hero-gradient {
-            background: radial-gradient(circle at 70% 50%, rgba(0, 120, 212, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+        @keyframes morph {
+            0% { border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%; }
+            100% { border-radius: 30% 60% 40% 70% / 70% 40% 50% 60%; }
         }
-        .data-dot {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #0078D4;
-            border-radius: 50%;
-            opacity: 0.3;
-        }
-        .data-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(0, 120, 212, 0.2), transparent);
-            height: 1px;
-        }
+        .nav-scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 0.75rem 0; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4"
-  }
-}
-</script>
 </head>
-<body class="bg-white text-slate-800">
-    <div id="root"></div>
+<body class="bg-white text-[#1E293B] antialiased">
+    <!-- Header -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" alt="MODAX ERP" class="h-10 w-auto object-contain" onerror="this.outerHTML='<span class=\'text-2xl font-extrabold tracking-tight text-[#0078D4]\'>MODAX <span class=\'text-[#1E293B]\'>ERP</span></span>'">
+            </div>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-semibold text-slate-600">
+                <a href="#solutions" class="hover:text-[#0078D4] transition-colors">Solutions</a>
+                <a href="#industries" class="hover:text-[#0078D4] transition-colors">Industries</a>
+                <a href="#innovation" class="hover:text-[#0078D4] transition-colors">Innovation</a>
+                <a href="#company" class="hover:text-[#0078D4] transition-colors">Company</a>
+            </div>
+            <button class="bg-[#0078D4] text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-[#005a9e] transition-all shadow-lg shadow-blue-500/20 active:scale-95">Book a Consultation</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden hero-gradient">
+        <div class="abstract-shape"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full text-[10px] font-black text-[#0078D4] mb-8 tracking-[0.15em] uppercase"><span>Elite Microsoft Solutions Partner</span></div>
+                <h1 class="text-6xl md:text-[5.5rem] font-extrabold text-[#1E293B] leading-[1.02] mb-10 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
+                <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl font-normal">Your trusted partner for Dynamics 365 F&O and Business Central. Bridging the gap between complex operations and seamless efficiency.</p>
+                <div class="flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-6">
+                    <a href="#solutions" class="bg-[#0078D4] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all shadow-2xl shadow-blue-500/30 text-center flex items-center justify-center">Explore Our Solutions</a>
+                    <a href="#innovation" class="bg-white text-[#1E293B] border border-slate-200 px-10 py-5 rounded-full font-bold text-lg hover:bg-slate-50 transition-all text-center flex items-center justify-center">Innovation Hub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Grid -->
+    <section id="solutions" class="py-32 bg-[#F8FAFC]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center max-w-3xl mx-auto">
+                <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5">Solutions</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-8 tracking-tight">Enterprise Strategy & Technology</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm border-t-4 border-[#0078D4] transition-all card-hover flex flex-col">
+                    <h4 class="text-2xl font-bold text-[#1E293B] mb-5">Dynamics 365 F&O</h4>
+                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed">Enterprise-grade resource planning for complex global operations and multi-entity management.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-2xl shadow-sm border-t-4 border-[#0078D4] transition-all card-hover flex flex-col">
+                    <h4 class="text-2xl font-bold text-[#1E293B] mb-5">Dynamics 365 Business Central</h4>
+                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed">Agile, cloud-native ERP solutions for growing businesses looking for rapid digital maturity.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-2xl shadow-md border-t-4 border-[#0078D4] ring-1 ring-blue-50 transition-all card-hover relative flex flex-col">
+                    <div class="absolute top-0 right-0 bg-[#0078D4] text-white text-[9px] font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-widest">Star Product</div>
+                    <h4 class="text-2xl font-bold text-[#1E293B] mb-2">Modax WMS</h4>
+                    <h5 class="text-[#0078D4] font-bold text-xs mb-6 uppercase tracking-wider">Embedded Warehouse Management inside BC</h5>
+                    <p class="text-slate-600 mb-10 flex-grow leading-relaxed">Seamlessly integrated warehouse logic. No external connectors, just pure efficiency and native data flow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Hub -->
+    <section id="innovation" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 space-y-6 md:space-y-0 text-center md:text-left">
+                <div class="max-w-2xl">
+                    <h2 class="text-sm font-bold text-[#0078D4] tracking-[0.3em] uppercase mb-5">Innovation Lab</h2>
+                    <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] mb-8 tracking-tight">R&D and Proprietary Technology</h3>
+                </div>
+                <a href="#" class="text-[#0078D4] font-bold text-lg">Browse Our Lab →</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tech Card 1 -->
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Audit Shield</h4>
+                    <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Digital evidence for line clearance. Subjectivity eliminated.</p>
+                </div>
+                <!-- Tech Card 2 -->
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Variance Killer</h4>
+                    <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Real-time consumption tracking to pinpoint operational loss instantly.</p>
+                </div>
+                <!-- Tech Card 3 -->
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Inbound Compliance</h4>
+                    <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Digital gatekeeper for trailer inspection and receiving.</p>
+                </div>
+                <!-- Tech Card 4 -->
+                <div class="group p-10 border border-slate-100 rounded-3xl bg-white hover:bg-[#0078D4] transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h4 class="text-xl font-bold text-[#1E293B] group-hover:text-white mb-4 transition-colors">Project AURA</h4>
+                    <p class="text-slate-600 group-hover:text-white/80 transition-colors leading-relaxed text-sm">Bio-Aesthetic AI & Computer Vision R&D Lab.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1E293B] text-white pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <div class="text-3xl font-extrabold tracking-tight text-[#0078D4] mb-8 uppercase">Modax ERP</div>
+                <p class="text-slate-400 mb-6">Copyright 2026 Modax Consulting Inc. All Rights Reserved.</p>
+            </div>
+            <a href="#" class="text-2xl font-extrabold hover:text-[#0078D4] transition-colors mb-6 tracking-tight">Let's Build the Future</a>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 40) { nav.classList.add('nav-scrolled'); }
+            else { nav.classList.remove('nav-scrolled'); }
+        });
+    </script>
 </body>
 </html>

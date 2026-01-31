@@ -93,55 +93,42 @@
             display: flex; /* keep flex but hide opacity */
         }
 
-        /* Scrollytelling Visual Elements */
+        /* Heartbeat Pulse Animation */
+        @keyframes heartbeat {
+            0% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+            14% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 60px rgba(239, 68, 68, 0.6); }
+            28% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+            42% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 60px rgba(239, 68, 68, 0.6); }
+            70% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+        }
+        .animate-heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        /* Scrollytelling Transitions */
         .visual-panel {
             opacity: 0;
-            transform: scale(0.9) translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.5s ease-in-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             position: absolute;
             inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
+            transform: scale(0.9) translateY(30px);
         }
         .visual-panel.active {
             opacity: 1;
             transform: scale(1) translateY(0);
         }
 
-        .neon-shield {
-            width: 320px; height: 320px;
-            background: radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, transparent 70%);
-            border: 2px solid rgba(34, 211, 238, 0.5);
+        .neon-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-blur: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            box-shadow: 0 0 80px rgba(34, 211, 238, 0.3);
-            position: relative;
-        }
-        .neon-target {
-            width: 320px; height: 320px;
-            background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 80%);
-            border: 2px solid rgba(239, 68, 68, 0.5);
-            border-radius: 50%;
-            box-shadow: 0 0 80px rgba(239, 68, 68, 0.3);
-            position: relative;
-        }
-        .neon-gate {
-            width: 400px; height: 260px;
-            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
-            border: 2px solid rgba(59, 130, 246, 0.5);
-            border-bottom: none;
-            border-radius: 40px 40px 0 0;
-            box-shadow: 0 -20px 80px rgba(59, 130, 246, 0.3);
-            position: relative;
-        }
-        .neon-mesh {
-            width: 320px; height: 320px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-            border: 2px solid rgba(168, 85, 247, 0.5);
-            border-radius: 50%;
-            box-shadow: 0 0 100px rgba(168, 85, 247, 0.4);
-            position: relative;
+            padding: 60px;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -157,7 +144,6 @@
             </div>
             
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900">
-                <!-- MEGA MENU: SOLUTIONS -->
                 <div class="group h-full flex items-center">
                     <a href="#solutions" class="nav-wow-hover py-6 cursor-pointer relative z-[10000]">Solutions</a>
                     <div class="fixed left-0 top-full w-screen bg-[#020617]/95 backdrop-blur-2xl border-t border-white/10 shadow-2xl transform origin-top scale-y-0 opacity-0 invisible group-hover:scale-y-100 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[9998]">
@@ -181,7 +167,7 @@
                                     </div>
                                     <div class="relative z-10">
                                         <div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-[#00B7C3] mb-10 group-hover/item:bg-[#0078D4] group-hover/item:text-white transition-all">
-                                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                            <svg class="w-7 h-7" fill="none" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M13 10V3L4 14h7v7l9-11h-7z\"></path></svg>
                                         </div>
                                         <h4 class="text-white text-3xl font-black mb-6">Dynamics 365 Business Central</h4>
                                         <p class="text-slate-400 font-medium leading-relaxed text-lg">Streamline your entire business process with an agile cloud-native ecosystem.</p>
@@ -206,61 +192,30 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- MEGA MENU: INDUSTRIES -->
-                <div class="group h-full flex items-center">
-                    <a href="#industries" class="nav-wow-hover py-6 cursor-pointer relative z-[10000]">Industries</a>
-                    <div class="fixed left-0 top-full w-screen bg-[#020617]/95 backdrop-blur-2xl border-t border-white/10 shadow-2xl transform origin-top scale-y-0 opacity-0 invisible group-hover:scale-y-100 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[9998]">
-                        <div class="max-w-7xl mx-auto px-6 py-20">
-                            <div class="grid grid-cols-3 gap-10 text-left">
-                                <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
-                                    <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
-                                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M19.437 15.869c.758-1.33 1.063-2.581.945-3.852-.175-1.897-1.154-3.531-2.761-4.604l-.698 1.458c.874.582 1.434 1.442 1.576 2.457.065.703-.102 1.412-.472 2.062l1.41 1.479zm-4.305 4.341c1.321.764 2.564 1.077 3.824.969 1.884-.162 3.518-1.127 4.604-2.716l-1.47-.687c-.59.882-1.46 1.451-2.485 1.54-.712.061-1.43-.095-2.087-.456l-.386 1.35zm-5.132-15.148c-1.334-.746-2.593-1.037-3.864-.906-1.897.193-3.518 1.192-4.573 2.812l1.446.737c.563-.88 1.422-1.424 2.428-1.526.697-.071 1.402.086 2.043.444l.52-1.561zm13.13 14.15l-1.47-.687-.417 1.48c.594.316.96.837 1.033 1.482.08.705-.18 1.391-.703 1.858l1.041 1.092c1.01-.89 1.51-2.186 1.36-3.515-.125-1.112-.734-2.072-1.637-2.71zM4.192 11.23l1.446.737.472-1.464c-.33-.586-.33-1.274 0-1.86.347-.614.981-1 1.661-1.026l.162-1.59c-1.272.04-2.435.751-3.08 1.89-.646 1.14-.646 2.43 0 3.57l-1.107 1.743zm4.562 8.428l-.386 1.35c-1.318-.755-2.261-1.928-2.618-3.328-.344-1.346-.013-2.693.858-3.7l1.041 1.092c-.524.61-.734 1.442-.516 2.292.217.85.787 1.55 1.576 2.01l.045.284z"></path></svg>
+                <div class=\"group h-full flex items-center\">
+                    <a href=\"#industries\" class=\"nav-wow-hover py-6 cursor-pointer relative z-[10000]\">Industries</a>
+                    <div class=\"fixed left-0 top-full w-screen bg-[#020617]/95 backdrop-blur-2xl border-t border-white/10 shadow-2xl transform origin-top scale-y-0 opacity-0 invisible group-hover:scale-y-100 group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-out z-[9998]\">
+                        <div class=\"max-w-7xl mx-auto px-6 py-20\">
+                            <div class=\"grid grid-cols-3 gap-10 text-left\">
+                                <a href=\"#\" class=\"relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10\">
+                                    <div class=\"absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6\">
+                                        <svg class=\"w-64 h-64\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M19.437 15.869c.758-1.33 1.063-2.581.945-3.852-.175-1.897-1.154-3.531-2.761-4.604l-.698 1.458c.874.582 1.434 1.442 1.576 2.457.065.703-.102 1.412-.472 2.062l1.41 1.479zm-4.305 4.341c1.321.764 2.564 1.077 3.824.969 1.884-.162 3.518-1.127 4.604-2.716l-1.47-.687c-.59.882-1.46 1.451-2.485 1.54-.712.061-1.43-.095-2.087-.456l-.386 1.35zm-5.132-15.148c-1.334-.746-2.593-1.037-3.864-.906-1.897.193-3.518 1.192-4.573 2.812l1.446.737c.563-.88 1.422-1.424 2.428-1.526.697-.071 1.402.086 2.043.444l.52-1.561zm13.13 14.15l-1.47-.687-.417 1.48c.594.316.96.837 1.033 1.482.08.705-.18 1.391-.703 1.858l1.041 1.092c1.01-.89 1.51-2.186 1.36-3.515-.125-1.112-.734-2.072-1.637-2.71zM4.192 11.23l1.446.737.472-1.464c-.33-.586-.33-1.274 0-1.86.347-.614.981-1 1.661-1.026l.162-1.59c-1.272.04-2.435.751-3.08 1.89-.646 1.14-.646 2.43 0 3.57l-1.107 1.743zm4.562 8.428l-.386 1.35c-1.318-.755-2.261-1.928-2.618-3.328-.344-1.346-.013-2.693.858-3.7l1.041 1.092c-.524.61-.734 1.442-.516 2.292.217.85.787 1.55 1.576 2.01l.045.284z\"></path></svg>
                                     </div>
-                                    <div class="relative z-10">
-                                        <div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-[#00B7C3] mb-10 group-hover/item:bg-[#0078D4] group-hover/item:text-white transition-all">
-                                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.477 2.387a2 2 0 00.547 1.022l1.428 1.428a2 2 0 002.828 0l1.428-1.428a2 2 0 00.547-1.022l.477-2.387a2 2 0 00-1.414-1.96z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12V6m0 0l-3 3m3-3l3 3"></path></svg>
+                                    <div class=\"relative z-10\">
+                                        <div class=\"w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-[#00B7C3] mb-10 group-hover/item:bg-[#0078D4] group-hover/item:text-white transition-all\">
+                                            <svg class=\"w-7 h-7\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.477 2.387a2 2 0 00.547 1.022l1.428 1.428a2 2 0 002.828 0l1.428-1.428a2 2 0 00.547-1.022l.477-2.387a2 2 0 00-1.414-1.96z\"></path><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 12V6m0 0l-3 3m3-3l3 3\"></path></svg>
                                         </div>
-                                        <h4 class="text-white text-3xl font-black mb-6">Manufacturing</h4>
-                                        <p class="text-slate-400 font-medium leading-relaxed text-lg">Streamline production cycles and shop floor control with real-time visibility.</p>
-                                    </div>
-                                </a>
-                                <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10">
-                                    <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-white transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
-                                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                                    </div>
-                                    <div class="relative z-10">
-                                        <div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-[#00B7C3] mb-10 group-hover/item:bg-[#0078D4] group-hover/item:text-white transition-all">
-                                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                                        </div>
-                                        <h4 class="text-white text-3xl font-black mb-6">Retail & Commerce</h4>
-                                        <p class="text-slate-400 font-medium leading-relaxed text-lg">Unified commerce across all channels, from store-front to supply chain.</p>
-                                    </div>
-                                </a>
-                                <a href="#" class="relative group/item p-10 rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10 hover:border-[#00B7C3]/40 transition-all duration-300 shadow-2xl">
-                                    <div class="absolute -right-6 -bottom-6 opacity-[0.08] text-[#00B7C3] transition-transform duration-700 group-hover/item:scale-125 group-hover/item:-translate-y-6">
-                                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"></path></svg>
-                                    </div>
-                                    <div class="relative z-10 text-left">
-                                        <div class="flex items-center justify-between mb-10">
-                                            <div class="w-14 h-14 rounded-2xl bg-[#00B7C3]/20 flex items-center justify-center text-[#00B7C3]">
-                                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1"></path></svg>
-                                            </div>
-                                            <span class="bg-[#00B7C3] text-[#020617] text-[10px] font-black px-5 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-lg shadow-[#00B7C3]/20">Core Focus</span>
-                                        </div>
-                                        <h4 class="text-white text-3xl font-black mb-6">Distribution & WMS</h4>
-                                        <p class="text-slate-200 font-medium leading-relaxed text-lg">Optimize inventory flow and fulfillment with native WMS logic.</p>
+                                        <h4 class=\"text-white text-3xl font-black mb-6\">Manufacturing</h4>
+                                        <p class=\"text-slate-400 font-medium leading-relaxed text-lg\">Streamline production cycles and shop floor control with real-time visibility.</p>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <a href="#innovation" class="nav-wow-hover">Innovation</a>
                 <a href="#company" class="nav-wow-hover">Company</a>
             </div>
-
             <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/20 active:scale-95">
                 Book a Consultation
             </button>
@@ -311,8 +266,8 @@
                     </a>
                 </div>
                 <div class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 bento-card hover:shadow-xl group reveal delay-200">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2zm0 0l7 7m0 0l7-7m-7 7v8" /></svg>
+                    <div class=\"w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-[#0078D4]\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2zm0 0l7 7m0 0l7-7m-7 7v8\" /></svg>
                     </div>
                     <h4 class="text-3xl font-bold text-[#1E293B] mb-6">Dynamics 365 Business Central</h4>
                     <p class="text-slate-600 mb-10 leading-relaxed text-lg">Agile, cloud-native ERP solutions for growing businesses looking for rapid digital maturity.</p>
@@ -338,84 +293,111 @@
         </div>
     </section>
 
-    <!-- Innovation Scrollytelling Section -->
-    <section id="innovation" class="bg-[#0F172A]">
+    <!-- INNOVATION HUB: APPLE-STYLE SCROLLYTELLING -->
+    <section id="innovation" class="bg-[#0F172A] relative">
+        <!-- Section Header -->
         <div class="max-w-7xl mx-auto px-6 py-32 text-center reveal">
             <h2 class="text-sm font-black text-cyan-400 tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
             <h3 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">The Innovation Hub</h3>
-            <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Pioneering the future of intelligent supply chain logic.</p>
+            <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Where Modax R&D meets human performance. A film-strip narrative of intelligent logic.</p>
         </div>
-        
-        <div class="relative h-[400vh]">
-            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-                <!-- Left: Sticky Visual Side -->
-                <div class="w-full md:w-1/2 h-1/2 md:h-full relative flex items-center justify-center overflow-hidden border-r border-white/5 bg-[#0F172A]">
-                    <!-- Step 1: Audit Shield -->
+
+        <!-- Scrollytelling Container -->
+        <div class="relative h-[400vh] flex flex-col md:flex-row">
+            <!-- Left Side: STICKY VISUAL -->
+            <div class="sticky top-0 h-screen w-full md:w-1/2 flex items-center justify-center overflow-hidden z-20">
+                <!-- Scenes Container -->
+                <div class="relative w-full h-full">
+                    <!-- Scene 1: Audit Shield -->
                     <div id="visual-shield" class="visual-panel active">
-                        <div class="neon-shield flex flex-col items-center justify-center p-8">
-                            <svg class="w-24 h-24 text-cyan-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                            <span class="text-white text-xs font-black tracking-[0.3em] uppercase opacity-40">Protocol Verification</span>
-                        </div>
-                    </div>
-                    <!-- Step 2: Variance Killer -->
-                    <div id="visual-variance" class="visual-panel">
-                        <div class="neon-target flex flex-col items-center justify-center">
-                            <div class="w-48 h-48 border-2 border-red-500/30 rounded-full animate-ping absolute"></div>
-                            <svg class="w-24 h-24 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                    </div>
-                    <!-- Step 3: Inbound Compliance -->
-                    <div id="visual-compliance" class="visual-panel">
-                        <div class="neon-gate flex flex-col items-center justify-center">
-                            <div class="absolute inset-0 bg-blue-500/5 backdrop-blur-sm"></div>
-                            <svg class="w-24 h-24 text-blue-500 mb-4 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                            <span class="text-blue-400 text-[10px] font-black tracking-[0.5em] uppercase z-10">Gate Access Verified</span>
-                        </div>
-                    </div>
-                    <!-- Step 4: Project Aura -->
-                    <div id="visual-aura" class="visual-panel">
-                        <div class="neon-mesh flex flex-col items-center justify-center">
-                            <div class="absolute inset-0 overflow-hidden rounded-full">
-                                <div class="w-full h-full bg-gradient-to-tr from-purple-500/20 to-transparent animate-spin-slow"></div>
+                        <div class="neon-glass">
+                            <svg class="w-40 h-40 text-emerald-500 filter drop-shadow-[0_0_20px_rgba(16,185,129,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <div class="mt-12 text-center">
+                                <span class="text-emerald-400 text-xs font-black tracking-[0.4em] uppercase opacity-60">Audit Protocol Active</span>
                             </div>
-                            <svg class="w-24 h-24 text-purple-400 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                    </div>
+
+                    <!-- Scene 2: Variance Killer -->
+                    <div id="visual-variance" class="visual-panel">
+                        <div class="neon-glass animate-heartbeat">
+                            <svg class="w-40 h-40 text-red-500 filter drop-shadow-[0_0_30px_rgba(239,68,68,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="1"></circle>
+                                <circle cx="12" cy="12" r="3" stroke-width="2"></circle>
+                                <path stroke-linecap="round" stroke-width="2" d="M12 2v4m0 12v4M2 12h4m12 0h4"></path>
+                            </svg>
+                            <div class="mt-12 text-center">
+                                <span class="text-red-400 text-xs font-black tracking-[0.4em] uppercase opacity-60">Real-time Target Lock</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 3: Inbound Compliance -->
+                    <div id="visual-compliance" class="visual-panel">
+                        <div class="neon-glass">
+                            <svg class="w-40 h-40 text-blue-500 filter drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                            <div class="mt-12 text-center">
+                                <span class="text-blue-400 text-xs font-black tracking-[0.4em] uppercase opacity-60">Gatekeeper Protocol</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scene 4: Project Aura -->
+                    <div id="visual-aura" class="visual-panel">
+                        <div class="neon-glass">
+                            <div class="relative w-40 h-40">
+                                <svg class="absolute inset-0 w-full h-full text-purple-500 filter drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                <div class="absolute inset-0 border-4 border-cyan-400/20 rounded-full animate-spin-slow"></div>
+                            </div>
+                            <div class="mt-12 text-center">
+                                <span class="text-purple-400 text-xs font-black tracking-[0.4em] uppercase opacity-60">Neural Mesh Online</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right: Natural Scroll Narrative -->
-                <div class="w-full md:w-1/2 h-full flex flex-col">
-                    <!-- Step 1 Trigger -->
-                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="shield">
-                        <div class="text-left">
-                            <h4 class="text-cyan-400 font-black uppercase tracking-[0.3em] mb-4 text-sm">Audit Shield</h4>
-                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Don't just hope the line was cleaned—prove it.</h3>
-                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Digital hygiene checklists created instantly. We replace subjective verification with data-backed evidence.</p>
-                        </div>
+            <!-- Right Side: SCROLLING TEXT -->
+            <div class="w-full md:w-1/2 relative z-10 pointer-events-none">
+                <!-- Trigger 1 -->
+                <div class="h-screen flex items-center justify-center px-12 md:px-24 trigger-scene pointer-events-auto" data-scene="shield">
+                    <div class="max-w-md">
+                        <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6 text-sm">Scene 01: Audit Shield</h4>
+                        <h3 class="text-white text-5xl md:text-6xl font-black leading-tight mb-8">Don't just hope the line was cleaned—prove it.</h3>
+                        <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Digital hygiene checklists created instantly. We eliminate subjective verification with real-time audit trails.</p>
                     </div>
-                    <!-- Step 2 Trigger -->
-                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="variance">
-                        <div class="text-left">
-                            <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-4 text-sm">Variance Killer</h4>
-                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Eliminate the end-of-shift guessing game.</h3>
-                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Real-time consumption tracking. Our algorithms identify material loss the micro-second it happens on the floor.</p>
-                        </div>
+                </div>
+
+                <!-- Trigger 2 -->
+                <div class="h-screen flex items-center justify-center px-12 md:px-24 trigger-scene pointer-events-auto" data-scene="variance">
+                    <div class="max-w-md">
+                        <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6 text-sm">Scene 02: Variance Killer</h4>
+                        <h3 class="text-white text-5xl md:text-6xl font-black leading-tight mb-8">Eliminate the end-of-shift guessing game.</h3>
+                        <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Real-time consumption tracking. Our algorithms catch material loss the moment it occurs on the shop floor.</p>
                     </div>
-                    <!-- Step 3 Trigger -->
-                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="compliance">
-                        <div class="text-left">
-                            <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-4 text-sm">Inbound Compliance</h4>
-                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Digital gatekeeper for your warehouse.</h3>
-                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Nothing enters without a digital audit trail. Seamless trailer inspection and receipt validation built into the core logic.</p>
-                        </div>
+                </div>
+
+                <!-- Trigger 3 -->
+                <div class="h-screen flex items-center justify-center px-12 md:px-24 trigger-scene pointer-events-auto" data-scene="compliance">
+                    <div class="max-w-md">
+                        <h4 class=\"text-blue-500 font-black uppercase tracking-[0.3em] mb-6 text-sm\">Scene 03: Inbound Compliance</h4>
+                        <h3 class=\"text-white text-5xl md:text-6xl font-black leading-tight mb-8\">Digital gatekeeper for your warehouse.</h3>
+                        <p class=\"text-slate-400 text-xl md:text-2xl leading-relaxed\">Nothing enters without a digital audit trail. Seamless trailer inspection and receipt validation built into your BC core.</p>
                     </div>
-                    <!-- Step 4 Trigger -->
-                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="aura">
-                        <div class="text-left">
-                            <h4 class="text-purple-400 font-black uppercase tracking-[0.3em] mb-4 text-sm">Project Aura</h4>
-                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Bio-Aesthetic AI and Computer Vision.</h3>
-                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Where Modax R&D meets human performance. Cameras that understand quality standards and aesthetics at an enterprise scale.</p>
-                        </div>
+                </div>
+
+                <!-- Trigger 4 -->
+                <div class=\"h-screen flex items-center justify-center px-12 md:px-24 trigger-scene pointer-events-auto\" data-scene=\"aura\">
+                    <div class=\"max-w-md\">
+                        <h4 class=\"text-purple-400 font-black uppercase tracking-[0.3em] mb-6 text-sm\">Scene 04: Project Aura</h4>
+                        <h3 class=\"text-white text-5xl md:text-6xl font-black leading-tight mb-8\">Bio-Aesthetic AI and Computer Vision.</h3>
+                        <p class=\"text-slate-400 text-xl md:text-2xl leading-relaxed\">Where Modax R&D meets human performance. Cameras that understand quality standards and aesthetics at an enterprise scale.</p>
                     </div>
                 </div>
             </div>
@@ -427,7 +409,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-24 gap-12 text-left">
                 <div class="max-w-md">
-                    <!-- RETAINED FOOTER LOGO BADGE (White Container Fix) -->
+                    <!-- RETAINED FOOTER LOGO BADGE -->
                     <div class="bg-white rounded-lg p-3 w-40 mb-10 shadow-xl flex items-center justify-center overflow-hidden">
                         <img src="logo.png" alt="Modax ERP" class="h-10 w-auto block object-contain">
                     </div>
@@ -526,14 +508,12 @@
                 title: "Cookie Policy",
                 content: `
                     <p>We use essential cookies for portal security and analytical cookies to optimize global user experience. By continuing to use our services, you consent to our use of cookies in accordance with GDPR and CCPA standards.</p>
-                    <p>Essential cookies are required for platform stability and cannot be disabled. Analytical cookies help us understand user interaction across our Global Manufacturing and Retail dashboards.</p>
                 `
             },
             accessibility: {
                 title: "Accessibility Statement",
                 content: `
                     <p>Modax is committed to digital inclusivity, adhering to AODA (Ontario) and applicable international accessibility standards to ensure our tools are usable by everyone.</p>
-                    <p>We continuously audit our Innovation Hub interfaces to maintain high WCAG standards for all enterprise users across Canada, the UK, and the USA.</p>
                 `
             }
         };
@@ -542,7 +522,6 @@
             const modal = document.getElementById('legalModal');
             const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
-            
             if (legalData[type]) {
                 title.innerText = legalData[type].title;
                 content.innerHTML = legalData[type].content;
@@ -565,7 +544,7 @@
             if (e.target.id === 'legalModal') closeLegalModal();
         });
 
-        // Navbar Scroll Handling - Maintain huge h-48 logo scaling
+        // Navbar Scroll Handling
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) { 
@@ -584,7 +563,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Scrollytelling Visual Switching Logic
+        // SCROLLYTELLING LOGIC
         const visualPanels = {
             shield: document.getElementById('visual-shield'),
             variance: document.getElementById('visual-variance'),
@@ -595,19 +574,25 @@
         const scrollyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const step = entry.target.dataset.step;
-                    // Deactivate all panels
-                    Object.values(visualPanels).forEach(p => p.classList.remove('active'));
-                    // Activate current step panel
-                    if (visualPanels[step]) visualPanels[step].classList.add('active');
+                    const scene = entry.target.dataset.scene;
+                    // Reset all panels
+                    Object.values(visualPanels).forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    // Activate selected panel
+                    if (visualPanels[scene]) {
+                        visualPanels[scene].classList.add('active');
+                    }
                 }
             });
         }, {
             threshold: 0.5,
-            rootMargin: '0px 0px -20% 0px'
+            rootMargin: '-10% 0px -10% 0px' // Tighten window for center activation
         });
 
-        document.querySelectorAll('.trigger-step').forEach(trigger => scrollyObserver.observe(trigger));
+        document.querySelectorAll('.trigger-scene').forEach(trigger => {
+            scrollyObserver.observe(trigger);
+        });
     </script>
 </body>
 </html>

@@ -111,69 +111,68 @@
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Prevent Layout Shifts in Fixed Nav */
-        nav { height: 5rem; } /* Matches h-20 roughly */
+        /* Navbar Sizing */
+        nav { height: 6rem; }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
-    <!-- Header/Navigation (FIXED STRUCTURE) -->
+    <!-- Header/Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center bg-white/95 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative">
-            <div class="flex items-center">
-                <!-- LOGO FIX: h-20 for better sticky layout -->
-                <a href="/" class="flex items-center py-2">
-                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-20 w-auto object-contain transition-all duration-500 origin-left">
+        <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
+            <div class="flex items-center h-full overflow-visible">
+                <!-- THE LOGO: MUST be h-48 and overlapping -->
+                <a href="/" class="flex items-center relative h-full overflow-visible">
+                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-48 w-auto relative z-[110] transition-all duration-500 origin-top-left" style="margin-top: 10px;">
                 </a>
             </div>
             
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
                 <!-- SOLUTIONS DROPDOWN -->
-                <div class="group relative flex items-center h-20">
-                    <a href="#solutions" class="nav-wow-hover cursor-pointer">Solutions</a>
-                    <!-- Absolute position mega-menu -->
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-[#020617]/95 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-3xl p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[110]">
-                        <div class="grid grid-cols-2 gap-6">
-                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">
-                                <h4 class="text-white text-xl font-bold mb-2">Dynamics 365 F&O</h4>
-                                <p class="text-slate-400 text-sm">Enterprise-grade strategy for global manufacturing.</p>
+                <div class="group relative flex items-center h-full">
+                    <a href="#solutions" class="nav-wow-hover py-8 cursor-pointer">Solutions</a>
+                    <div class="fixed left-0 top-[6rem] w-screen bg-[#020617]/95 backdrop-blur-3xl border-t border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
+                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
+                            <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
+                                <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 F&O</h4>
+                                <p class="text-slate-400">Enterprise resource planning for global operations.</p>
                             </a>
-                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">
-                                <h4 class="text-white text-xl font-bold mb-2">Dynamics 365 Business Central</h4>
-                                <p class="text-slate-400 text-sm">Agile cloud ERP for growing business operations.</p>
+                            <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
+                                <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 Business Central</h4>
+                                <p class="text-slate-400">Agile cloud native ERP for growing enterprise businesses.</p>
                             </a>
-                            <a href="#" class="p-6 rounded-2xl bg-blue-500/10 border border-blue-500/20 transition-all">
-                                <h4 class="text-blue-400 text-xl font-bold mb-2">Modax WMS</h4>
-                                <p class="text-slate-300 text-sm">Native warehouse management embedded inside BC.</p>
+                            <a href="#" class="p-8 rounded-3xl bg-blue-500/10 border border-blue-500/20 transition-all">
+                                <h4 class="text-blue-400 text-2xl font-black mb-2">Modax WMS</h4>
+                                <p class="text-slate-200 font-medium">Native warehouse logic embedded inside Business Central.</p>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- INDUSTRIES DROPDOWN -->
-                <div class="group relative flex items-center h-20">
-                    <a href="#industries" class="nav-wow-hover cursor-pointer">Industries</a>
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-[#020617]/95 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-3xl p-8 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[110]">
-                        <div class="grid grid-cols-2 gap-4">
-                            <a href="#" class="p-4 rounded-xl hover:bg-white/5 text-white font-bold">Manufacturing</a>
-                            <a href="#" class="p-4 rounded-xl hover:bg-white/5 text-white font-bold">Distribution</a>
-                            <a href="#" class="p-4 rounded-xl hover:bg-white/5 text-white font-bold">Retail</a>
-                            <a href="#" class="p-4 rounded-xl hover:bg-white/5 text-white font-bold">Food & Beverage</a>
+                <div class="group relative flex items-center h-full">
+                    <a href="#industries" class="nav-wow-hover py-8 cursor-pointer">Industries</a>
+                    <div class="fixed left-0 top-[6rem] w-screen bg-[#020617]/95 backdrop-blur-3xl border-t border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
+                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-4 gap-4 text-white font-bold">
+                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Manufacturing</a>
+                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Distribution</a>
+                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Retail</a>
+                            <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Food & Beverage</a>
                         </div>
                     </div>
                 </div>
 
-                <a href="#innovation" class="nav-wow-hover">Innovation</a>
-                <a href="#company" class="nav-wow-hover">Company</a>
+                <a href="#innovation" class="nav-wow-hover py-8">Innovation</a>
+                <a href="#company" class="nav-wow-hover py-8">Company</a>
             </div>
 
-            <button class="bg-[#0078D4] text-white px-8 py-3 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/20 active:scale-95">
+            <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/20 active:scale-95">
                 Book a Consultation
             </button>
         </div>
     </nav>
 
-    <!-- Spacer to offset fixed nav -->
-    <div class="h-20"></div>
+    <!-- Spacer -->
+    <div class="h-[6rem]"></div>
 
     <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient">
@@ -185,122 +184,109 @@
                 </div>
                 <h1 class="text-6xl md:text-8xl font-extrabold text-[#1E293B] leading-[1.05] mb-12 tracking-tight">Orchestrating Growth with <span class="text-[#0078D4]">Intelligent ERP.</span></h1>
                 <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-14 max-w-3xl font-normal">Your trusted Microsoft Dynamics partner for Dynamics 365 Finance & Operations and Business Central. Bridging the gap between complex operations and seamless efficiency.</p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#solutions" class="bg-[#0078D4] text-white px-10 py-5 rounded-full font-bold text-lg shadow-lg hover:shadow-blue-500/30 transition-all">Explore Solutions</a>
-                    <a href="#innovation" class="bg-white text-[#0078D4] border-2 border-[#0078D4] px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-50 transition-all">Innovation Hub</a>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+                    <a href="#solutions" class="bg-[#0078D4] text-white px-12 py-6 rounded-full font-bold text-lg shadow-2xl hover:bg-[#005a9e] transition-all">Explore Solutions</a>
+                    <a href="#innovation" class="bg-white text-[#0078D4] border-2 border-[#0078D4] px-12 py-6 rounded-full font-bold text-lg hover:bg-blue-50 transition-all">Innovation Hub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions Section -->
+    <!-- Solutions Bento -->
     <section id="solutions" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-24 text-center max-w-3xl mx-auto reveal">
-                <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Solutions</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight">Enterprise-Grade Performance</h3>
+                <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Capabilities</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight">Enterprise Performance. Delivered.</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-slate-50 p-12 rounded-[2.5rem] bento-card border border-slate-100 hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <div class="h-1 bg-[#0078D4] w-20 mb-10"></div>
-                    <h4 class="text-3xl font-bold mb-6">Dynamics 365 F&O</h4>
-                    <p class="text-slate-600 mb-8 text-lg">Enterprise-grade resource planning for complex global operations.</p>
-                    <a href="#" class="text-[#0078D4] font-bold inline-flex items-center group">
-                        Learn More <span class="ml-2 arrow-move">→</span>
-                    </a>
+                <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
+                    <h4 class="text-3xl font-black mb-6">Dynamics 365 F&O</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
+                    <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
-                <div class="bg-slate-50 p-12 rounded-[2.5rem] bento-card border border-slate-100 hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <div class="h-1 bg-[#0078D4] w-20 mb-10"></div>
-                    <h4 class="text-3xl font-bold mb-6">Dynamics 365 Business Central</h4>
-                    <p class="text-slate-600 mb-8 text-lg">Agile, cloud-native ERP solutions for growing businesses.</p>
-                    <a href="#" class="text-[#0078D4] font-bold inline-flex items-center group">
-                        Learn More <span class="ml-2 arrow-move">→</span>
-                    </a>
+                <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
+                    <h4 class="text-3xl font-black mb-6">Dynamics 365 Business Central</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
+                    <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INNOVATION HUB: APPLE STICKY SCROLL -->
-    <section id="innovation" class="bg-slate-50 relative z-10 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 py-32 text-center reveal">
-            <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Innovation Lab</h2>
-            <h3 class="text-5xl md:text-7xl font-black text-[#1E293B] tracking-tighter mb-8">Intelligent Supply Chain</h3>
+    <!-- INNOVATION HUB: STICKY LAB -->
+    <section id="innovation" class="relative z-10 bg-[#020617] text-white">
+        <div class="max-w-7xl mx-auto px-6 py-40 text-center reveal">
+            <h2 class="text-sm font-black text-[#0078D4] tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
+            <h3 class="text-5xl md:text-8xl font-black tracking-tighter mb-8">The Innovation Hub</h3>
+            <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Intelligent supply chain logic built for native Microsoft environments.</p>
         </div>
 
         <div class="relative h-[400vh] flex flex-col md:flex-row">
-            <!-- Left Side: STICKY VISUAL (top-24 to avoid header overlap) -->
-            <div class="sticky top-24 h-[80vh] w-full md:w-1/2 flex items-center justify-center overflow-hidden bg-[#0F172A] rounded-[3rem] my-4 mx-0 md:ml-6 shadow-2xl">
-                <div class="relative w-full h-full">
-                    <!-- Scene 1: Audit Shield -->
-                    <div id="visual-shield" class="visual-panel active">
-                        <div class="neon-glass border-emerald-500/30">
-                            <svg class="w-32 h-32 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            <!-- Left Side: STICKY VISUAL (DEEP NAVY) -->
+            <div class="sticky top-0 h-screen w-full md:w-1/2 flex items-center justify-center bg-[#020617] overflow-hidden">
+                <div class="relative w-full h-full flex items-center justify-center">
+                    <!-- Glass Panel for Icons -->
+                    <div class="neon-glass border-white/5 bg-white/[0.02] p-24">
+                        <!-- Step 1: Audit Shield -->
+                        <div id="visual-shield" class="visual-panel active">
+                            <svg class="w-40 h-40 text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                             </svg>
                         </div>
-                    </div>
-
-                    <!-- Scene 2: Variance Killer -->
-                    <div id="visual-variance" class="visual-panel">
-                        <div class="neon-glass border-red-500/30 animate-heartbeat">
-                            <svg class="w-32 h-32 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
-                                <circle cx="12" cy="12" r="3" stroke-width="2.5"></circle>
+                        <!-- Step 2: Variance Killer -->
+                        <div id="visual-variance" class="visual-panel">
+                            <svg class="w-40 h-40 text-red-500 animate-heartbeat drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="1"></circle>
+                                <circle cx="12" cy="12" r="3" stroke-width="2"></circle>
                                 <path stroke-linecap="round" stroke-width="2" d="M12 2v4m0 12v4M2 12h4m12 0h4"></path>
                             </svg>
                         </div>
-                    </div>
-
-                    <!-- Scene 3: Inbound Compliance -->
-                    <div id="visual-compliance" class="visual-panel">
-                        <div class="neon-glass border-blue-500/30">
-                            <svg class="w-32 h-32 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        <!-- Step 3: Inbound Compliance -->
+                        <div id="visual-compliance" class="visual-panel">
+                            <svg class="w-40 h-40 text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                         </div>
-                    </div>
-
-                    <!-- Scene 4: Project Aura -->
-                    <div id="visual-aura" class="visual-panel">
-                        <div class="neon-glass border-purple-500/30">
-                            <svg class="w-32 h-32 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        <!-- Step 4: Project Aura -->
+                        <div id="visual-aura" class="visual-panel">
+                            <svg class="w-40 h-40 text-purple-500 drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: NARRATIVE -->
-            <div class="w-full md:w-1/2 relative px-6 md:px-24">
+            <!-- Right Side: MOVIE-STYLE SCROLL -->
+            <div class="w-full md:w-1/2 relative px-12 md:px-24">
                 <div class="h-screen flex items-center trigger-scene" data-scene="shield">
                     <div class="max-w-md">
-                        <h4 class="text-[#0078D4] font-black uppercase tracking-widest mb-4">Audit Shield</h4>
-                        <h3 class="text-4xl font-black mb-6">Don't just hope the line was cleaned—prove it.</h3>
-                        <p class="text-slate-600 text-lg">Digital hygiene checklists created instantly. We replace subjective verification with data-backed evidence.</p>
+                        <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6">Scene 01: Audit Shield</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8">Don't just hope the line was cleaned—prove it.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Triggers digital hygiene checklists based on your rules. Creates a permanent, audit-ready digital record in Business Central before the job starts.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="variance">
                     <div class="max-w-md">
-                        <h4 class="text-red-500 font-black uppercase tracking-widest mb-4">Variance Killer</h4>
-                        <h3 class="text-4xl font-black mb-6">Eliminate the end-of-shift guessing game.</h3>
-                        <p class="text-slate-600 text-lg">Real-time consumption tracking. Our algorithms identify material loss the micro-second it happens on the floor.</p>
+                        <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6">Scene 02: Variance Killer</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8">Stop the end-of-shift guessing game.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Real-time consumption tracking compares 'Actual vs. Theoretical' usage instantly. Get instant Yield & Waste Reports to identify over-consumption trends immediately.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="compliance">
                     <div class="max-w-md">
-                        <h4 class="text-blue-500 font-black uppercase tracking-widest mb-4">Inbound Compliance</h4>
-                        <h3 class="text-4xl font-black mb-6">Digital gatekeeper for your warehouse.</h3>
-                        <p class="text-slate-600 text-lg">Nothing enters without a digital audit trail. Seamless trailer inspection and receipt validation built into the core.</p>
+                        <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Scene 03: Inbound Compliance</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8">The Digital Gatekeeper.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Before goods enter the building, force a mandatory Trailer Inspection (odours, pests, temp) via the Modax App. Creates a permanent audit trail linked to the PO Receipt.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="aura">
                     <div class="max-w-md">
-                        <h4 class="text-purple-500 font-black uppercase tracking-widest mb-4">Project Aura</h4>
-                        <h3 class="text-4xl font-black mb-6">Bio-Aesthetic AI.</h3>
-                        <p class="text-slate-600 text-lg">Where Modax R&D meets human performance. Engineering computer vision that understands enterprise aesthetics.</p>
+                        <h4 class="text-purple-500 font-black uppercase tracking-[0.3em] mb-6">Scene 04: Project Aura</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8">Bio-Aesthetic AI.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Where Modax R&D meets human performance. Advanced biometric fusion for the next generation of workforce wellness and computer vision accuracy.</p>
                     </div>
                 </div>
             </div>
@@ -308,30 +294,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#020617] text-white pt-24 pb-12 border-t border-white/5">
+    <footer class="bg-[#020617] text-white pt-32 pb-16 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
-                <div class="max-w-sm">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+                <div class="max-w-sm text-left">
                     <!-- RETAINED LOGO BADGE -->
-                    <div class="bg-white rounded-xl p-3 w-40 mb-8 shadow-2xl flex items-center justify-center">
-                        <img src="logo.png" alt="Modax ERP" class="h-10 w-auto object-contain">
+                    <div class="bg-white rounded-xl p-4 w-48 mb-10 shadow-2xl flex items-center justify-center">
+                        <img src="logo.png" alt="Modax ERP" class="h-12 w-auto object-contain">
                     </div>
-                    <p class="text-slate-400 leading-relaxed mb-6">Orchestrating growth through deep Microsoft Dynamics 365 expertise and proprietary Innovation Hub tools.</p>
+                    <p class="text-slate-400 leading-relaxed mb-8 font-medium">Orchestrating growth through Microsoft Dynamics 365 expertise and proprietary warehouse intelligence tools.</p>
                     <p class="text-slate-500 text-sm">2233 Argentia Rd. East Tower Suite 302,<br>Mississauga, Ontario L5N 2X7, Canada</p>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-16 md:gap-32">
-                    <div>
-                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-8 opacity-50">Expertise</h4>
-                        <ul class="space-y-4 text-sm text-slate-300">
+                <div class="grid grid-cols-2 gap-24">
+                    <div class="text-left">
+                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Expertise</h4>
+                        <ul class="space-y-5 text-md text-slate-300 font-bold">
                             <li><a href="#" class="hover:text-blue-400 transition-colors">Microsoft D365 Business Central</a></li>
                             <li><a href="#" class="hover:text-blue-400 transition-colors">Dynamics 365 F&O</a></li>
                             <li><a href="#" class="hover:text-blue-400 transition-colors">Modax WMS</a></li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-8 opacity-50">Legal</h4>
-                        <ul class="space-y-4 text-sm text-slate-400">
+                    <div class="text-left">
+                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Legal</h4>
+                        <ul class="space-y-5 text-md text-slate-400 font-bold">
                             <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="hover:text-white transition-colors">Privacy Policy</a></li>
                             <li><a href="javascript:void(0)" onclick="openLegalModal('terms')" class="hover:text-white transition-colors">Terms of Service</a></li>
                             <li><a href="javascript:void(0)" onclick="openLegalModal('cookies')" class="hover:text-white transition-colors">Cookie Policy</a></li>
@@ -341,36 +327,37 @@
                 </div>
             </div>
             
-            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
                 <p class="text-slate-500 text-sm font-bold">© 2026 Modax Consulting Inc. All Rights Reserved.</p>
-                <a href="#" class="text-xl font-black text-white hover:text-[#0078D4] transition-all">Let's Build the Future →</a>
+                <a href="#" class="text-2xl font-black text-white hover:text-[#0078D4] transition-all tracking-tight group">
+                    Let's Build the Future <span class="inline-block transition-transform group-hover:translate-x-2">→</span>
+                </a>
             </div>
         </div>
     </footer>
 
-    <!-- LEGAL MODALS (RETAINED) -->
-    <div id="legalModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-[#020617]/40 backdrop-blur-xl">
-        <div class="bg-[#020617]/90 border border-white/10 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative">
-            <button onclick="closeLegalModal()" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <!-- LEGAL MODALS -->
+    <div id="legalModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-[#020617]/40 backdrop-blur-3xl">
+        <div class="bg-[#020617]/95 border border-white/10 w-full max-w-2xl rounded-[3rem] overflow-hidden shadow-2xl relative">
+            <button onclick="closeLegalModal()" class="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <div class="p-12">
-                <h2 id="modalTitle" class="text-3xl font-black text-white mb-6">Legal Notice</h2>
-                <div id="modalContent" class="text-slate-300 text-lg leading-relaxed space-y-4 max-h-[50vh] overflow-y-auto"></div>
-                <div class="mt-8">
-                    <button onclick="closeLegalModal()" class="bg-[#0078D4] text-white px-10 py-3 rounded-full font-bold hover:bg-[#005a9e] transition-all">Close</button>
+            <div class="p-16">
+                <h2 id="modalTitle" class="text-4xl font-black text-white mb-10 tracking-tight">Legal Notice</h2>
+                <div id="modalContent" class="text-slate-300 text-xl leading-relaxed space-y-6 max-h-[50vh] overflow-y-auto pr-4"></div>
+                <div class="mt-12">
+                    <button onclick="closeLegalModal()" class="bg-[#0078D4] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all">Dismiss</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Modal Content Data
         const legalData = {
-            privacy: { title: "Privacy Policy", content: "<p>Global data commitment across Canada (PIPEDA), UK (GDPR), and USA. We do not sell client data processed via our Innovation Hub tools.</p>" },
-            terms: { title: "Terms of Service", content: "<p>Proprietary software including 'Modax WMS' remains IP of Modax Consulting Inc. Services are subject to specific client SLA contracts.</p>" },
-            cookies: { title: "Cookie Policy", content: "<p>We use essential and analytical cookies to optimize enterprise dashboard performance globally.</p>" },
-            accessibility: { title: "Accessibility", content: "<p>Adhering to AODA and international standards for inclusive digital toolsets.</p>" }
+            privacy: { title: "Privacy Policy", content: "<p>Global compliance commitment for <strong>Modax Consulting Inc. (Canada)</strong>, <strong>Modax Consulting Ltd. (UK)</strong>, and <strong>Modax Consulting LLC (USA)</strong>. We adhere to PIPEDA, UK GDPR, and CCPA standards. Client data remains the strict property of the client.</p>" },
+            terms: { title: "Terms of Service", content: "<p>Proprietary software including 'Modax WMS' and 'Audit Shield' are IP of Modax Consulting Inc. (Global HQ). Services are subject to individual master service agreements.</p>" },
+            cookies: { title: "Cookie Policy", content: "<p>We use functional and analytical cookies to improve portal security and optimize user workflows across our cloud ecosystem.</p>" },
+            accessibility: { title: "Accessibility", content: "<p>Committed to AODA and international web accessibility standards for all users.</p>" }
         };
 
         function openLegalModal(type) {
@@ -386,17 +373,17 @@
             document.body.style.overflow = '';
         }
 
-        // Navbar Styling on Scroll
+        // Navbar Shadow on Scroll
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                nav.classList.add('shadow-md');
+                nav.classList.add('shadow-xl');
             } else {
-                nav.classList.remove('shadow-md');
+                nav.classList.remove('shadow-xl');
             }
         });
 
-        // Intersection Observer for Animations
+        // Intersection Observer for Reveal
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');

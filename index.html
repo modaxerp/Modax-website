@@ -111,6 +111,19 @@
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
         }
 
+        /* Text Focus Scrollytelling Classes */
+        .scrolly-text-block {
+            opacity: 0.2;
+            filter: blur(2px);
+            transform: scale(0.95);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scrolly-text-block.active {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+
         /* Navbar Sizing */
         nav { height: 6rem; }
     </style>
@@ -120,21 +133,21 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center bg-white/95 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
             <div class="flex items-center h-full overflow-visible">
-                <!-- THE LOGO: MUST be h-48 and overlapping -->
+                <!-- LOGO BADGE: ID Card Style -->
                 <a href="/" class="flex items-center relative h-full overflow-visible">
-                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-48 w-auto relative z-[110] transition-all duration-500 origin-top-left" style="margin-top: 10px;">
+                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-40 w-auto bg-white rounded-xl shadow-2xl p-4 relative z-[110] transition-all duration-500 origin-top-left border border-slate-100" style="margin-top: 2rem;">
                 </a>
             </div>
             
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
-                <!-- SOLUTIONS DROPDOWN -->
+                <!-- SOLUTIONS DROPDOWN: Majestic Glass -->
                 <div class="group relative flex items-center h-full">
                     <a href="#solutions" class="nav-wow-hover py-8 cursor-pointer">Solutions</a>
-                    <div class="fixed left-0 top-[6rem] w-screen bg-[#020617]/95 backdrop-blur-3xl border-t border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
+                    <div class="fixed left-0 top-[6rem] w-screen bg-[#0F172A]/90 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
                             <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
                                 <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 F&O</h4>
-                                <p class="text-slate-400">Enterprise resource planning for global operations.</p>
+                                <p class="text-slate-400">Enterprise resource planning for complex global operations.</p>
                             </a>
                             <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
                                 <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 Business Central</h4>
@@ -148,10 +161,10 @@
                     </div>
                 </div>
 
-                <!-- INDUSTRIES DROPDOWN -->
+                <!-- INDUSTRIES DROPDOWN: Majestic Glass -->
                 <div class="group relative flex items-center h-full">
                     <a href="#industries" class="nav-wow-hover py-8 cursor-pointer">Industries</a>
-                    <div class="fixed left-0 top-[6rem] w-screen bg-[#020617]/95 backdrop-blur-3xl border-t border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
+                    <div class="fixed left-0 top-[6rem] w-screen bg-[#0F172A]/90 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-4 gap-4 text-white font-bold">
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Manufacturing</a>
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Distribution</a>
@@ -215,7 +228,7 @@
         </div>
     </section>
 
-    <!-- INNOVATION HUB: STICKY LAB -->
+    <!-- INNOVATION HUB: STICKY LAB WITH TEXT FOCUS -->
     <section id="innovation" class="relative z-10 bg-[#020617] text-white">
         <div class="max-w-7xl mx-auto px-6 py-40 text-center reveal">
             <h2 class="text-sm font-black text-[#0078D4] tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
@@ -224,18 +237,15 @@
         </div>
 
         <div class="relative h-[400vh] flex flex-col md:flex-row">
-            <!-- Left Side: STICKY VISUAL (DEEP NAVY) -->
+            <!-- Left Side: STICKY VISUAL -->
             <div class="sticky top-0 h-screen w-full md:w-1/2 flex items-center justify-center bg-[#020617] overflow-hidden">
                 <div class="relative w-full h-full flex items-center justify-center">
-                    <!-- Glass Panel for Icons -->
                     <div class="neon-glass border-white/5 bg-white/[0.02] p-24">
-                        <!-- Step 1: Audit Shield -->
                         <div id="visual-shield" class="visual-panel active">
                             <svg class="w-40 h-40 text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                             </svg>
                         </div>
-                        <!-- Step 2: Variance Killer -->
                         <div id="visual-variance" class="visual-panel">
                             <svg class="w-40 h-40 text-red-500 animate-heartbeat drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10" stroke-width="1"></circle>
@@ -243,13 +253,11 @@
                                 <path stroke-linecap="round" stroke-width="2" d="M12 2v4m0 12v4M2 12h4m12 0h4"></path>
                             </svg>
                         </div>
-                        <!-- Step 3: Inbound Compliance -->
                         <div id="visual-compliance" class="visual-panel">
                             <svg class="w-40 h-40 text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                         </div>
-                        <!-- Step 4: Project Aura -->
                         <div id="visual-aura" class="visual-panel">
                             <svg class="w-40 h-40 text-purple-500 drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -259,33 +267,33 @@
                 </div>
             </div>
 
-            <!-- Right Side: MOVIE-STYLE SCROLL -->
+            <!-- Right Side: APPLE-STYLE MOVIE SCROLL -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24">
                 <div class="h-screen flex items-center trigger-scene" data-scene="shield">
-                    <div class="max-w-md">
+                    <div class="max-w-md scrolly-text-block active">
                         <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6">Scene 01: Audit Shield</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8">Don't just hope the line was cleaned—prove it.</h3>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Don't just hope the line was cleaned—prove it.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Triggers digital hygiene checklists based on your rules. Creates a permanent, audit-ready digital record in Business Central before the job starts.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="variance">
-                    <div class="max-w-md">
+                    <div class="max-w-md scrolly-text-block">
                         <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6">Scene 02: Variance Killer</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8">Stop the end-of-shift guessing game.</h3>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Stop the end-of-shift guessing game.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Real-time consumption tracking compares 'Actual vs. Theoretical' usage instantly. Get instant Yield & Waste Reports to identify over-consumption trends immediately.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="compliance">
-                    <div class="max-w-md">
+                    <div class="max-w-md scrolly-text-block">
                         <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Scene 03: Inbound Compliance</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8">The Digital Gatekeeper.</h3>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">The Digital Gatekeeper.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Before goods enter the building, force a mandatory Trailer Inspection (odours, pests, temp) via the Modax App. Creates a permanent audit trail linked to the PO Receipt.</p>
                     </div>
                 </div>
                 <div class="h-screen flex items-center trigger-scene" data-scene="aura">
-                    <div class="max-w-md">
+                    <div class="max-w-md scrolly-text-block">
                         <h4 class="text-purple-500 font-black uppercase tracking-[0.3em] mb-6">Scene 04: Project Aura</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8">Bio-Aesthetic AI.</h3>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Bio-Aesthetic AI.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Where Modax R&D meets human performance. Advanced biometric fusion for the next generation of workforce wellness and computer vision accuracy.</p>
                     </div>
                 </div>
@@ -298,7 +306,6 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
                 <div class="max-w-sm text-left">
-                    <!-- RETAINED LOGO BADGE -->
                     <div class="bg-white rounded-xl p-4 w-48 mb-10 shadow-2xl flex items-center justify-center">
                         <img src="logo.png" alt="Modax ERP" class="h-12 w-auto object-contain">
                     </div>
@@ -404,11 +411,23 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const scene = entry.target.dataset.scene;
+                    
+                    // Update Visual Panels
                     Object.values(visualPanels).forEach(p => p.classList.remove('active'));
                     if (visualPanels[scene]) visualPanels[scene].classList.add('active');
+
+                    // Update Text Focus
+                    document.querySelectorAll('.scrolly-text-block').forEach(block => {
+                        block.classList.remove('active');
+                    });
+                    const activeBlock = entry.target.querySelector('.scrolly-text-block');
+                    if (activeBlock) activeBlock.classList.add('active');
                 }
             });
-        }, { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' });
+        }, { 
+            threshold: 0.5, 
+            rootMargin: '-5% 0px -5% 0px' 
+        });
 
         document.querySelectorAll('.trigger-scene').forEach(trigger => scrollyObserver.observe(trigger));
     </script>

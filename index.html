@@ -113,19 +113,24 @@
 
         /* Stationary Spotlight Scrollytelling Classes - NO MOVEMENT */
         .scrolly-text-block {
-            opacity: 0.2;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%) !important;
+            opacity: 0;
             filter: blur(4px);
-            transform: none !important; /* Force no movement */
             transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out;
             will-change: opacity, filter;
+            pointer-events: none;
         }
         .scrolly-text-block.active {
             opacity: 1;
             filter: blur(0);
-            transform: none !important;
+            pointer-events: auto;
         }
 
-        /* Navbar Sizing - SOLID WHITE */
+        /* Navbar Sizing - SOLID WHITE FIX */
         nav { height: 8rem; }
     </style>
 </head>
@@ -134,18 +139,17 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
             <div class="flex items-center h-full">
-                <!-- LOGO: Contained in white bar -->
+                <!-- LOGO: Contained in white bar to hide its white background square -->
                 <a href="/" class="flex items-center">
                     <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
                 </a>
             </div>
             
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
-                <!-- SOLUTIONS DROPDOWN: Majestic Glass -->
                 <div class="group relative flex items-center h-full">
                     <a href="#solutions" class="nav-wow-hover py-10 cursor-pointer">Solutions</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A]/95 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
+                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 text-left">
                             <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
                                 <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 F&O</h4>
                                 <p class="text-slate-400">Enterprise resource planning for complex global operations.</p>
@@ -162,11 +166,10 @@
                     </div>
                 </div>
 
-                <!-- INDUSTRIES DROPDOWN: Majestic Glass -->
                 <div class="group relative flex items-center h-full">
                     <a href="#industries" class="nav-wow-hover py-10 cursor-pointer">Industries</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A]/90 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
-                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-4 gap-4 text-white font-bold">
+                        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-4 gap-4 text-white font-bold text-left">
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Manufacturing</a>
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Distribution</a>
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Retail</a>
@@ -185,7 +188,7 @@
         </div>
     </nav>
 
-    <!-- Spacer to match Nav Height -->
+    <!-- Spacer -->
     <div class="h-[8rem]"></div>
 
     <!-- Hero Section -->
@@ -216,32 +219,26 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <h4 class="text-3xl font-black mb-6">Dynamics 365 F&O</h4>
-                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
+                    <h4 class="text-3xl font-black mb-6 text-left">Dynamics 365 F&O</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed text-left">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
                     <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
                 <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <h4 class="text-3xl font-black mb-6">Dynamics 365 Business Central</h4>
-                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
+                    <h4 class="text-3xl font-black mb-6 text-left">Dynamics 365 Business Central</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed text-left">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
                     <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INNOVATION HUB: STATIONARY FADE SCROLLYTELLING -->
-    <section id="innovation" class="relative z-10 bg-[#020617] text-white">
-        <div class="max-w-7xl mx-auto px-6 py-40 text-center reveal">
-            <h2 class="text-sm font-black text-[#0078D4] tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
-            <h3 class="text-5xl md:text-8xl font-black tracking-tighter mb-8">The Innovation Hub</h3>
-            <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Intelligent supply chain logic built for native Microsoft environments.</p>
-        </div>
-
-        <div class="relative h-[400vh] flex flex-col md:flex-row">
-            <!-- Left Side: STICKY VISUAL -->
-            <div class="sticky top-0 h-screen w-full md:w-1/2 flex items-center justify-center bg-[#020617] overflow-hidden">
-                <div class="relative w-full h-full flex items-center justify-center">
-                    <div class="neon-glass border-white/5 bg-white/[0.02] p-24">
+    <!-- INNOVATION HUB: APPLE STACKED STATIONARY FADE -->
+    <section id="innovation" class="relative bg-[#020617] text-white h-[400vh]">
+        <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+            <!-- Left Column: Visual Icons (Sticky within the wrapper) -->
+            <div class="w-full md:w-1/2 flex items-center justify-center p-12">
+                <div class="relative w-full max-w-lg aspect-square">
+                    <div class="neon-glass border-white/5 bg-white/[0.02] inset-0 absolute flex items-center justify-center">
                         <div id="visual-shield" class="visual-panel active">
                             <svg class="w-40 h-40 text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -268,31 +265,39 @@
                 </div>
             </div>
 
-            <!-- Right Side: STATIONARY FADE TEXT - NO MOVEMENT -->
+            <!-- Right Column: STATIONARY FADE TEXT STACK -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24">
-                <div class="h-screen flex items-center trigger-scene" data-scene="shield">
-                    <div class="max-w-md scrolly-text-block active">
+                <div class="relative w-full h-full">
+                    <!-- Intro Header (Fades out quickly) -->
+                    <div id="hub-intro" class="scrolly-text-block active">
+                        <h4 class="text-blue-500 font-black uppercase tracking-[0.5em] mb-8">Proprietary R&D</h4>
+                        <h3 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">The Innovation Hub</h3>
+                        <p class="text-slate-400 text-xl md:text-2xl font-medium leading-relaxed">Intelligent supply chain logic built for native Microsoft environments.</p>
+                    </div>
+
+                    <!-- Scene 1: Audit Shield -->
+                    <div id="text-shield" class="scrolly-text-block text-left">
                         <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6">Scene 01: Audit Shield</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Don't just hope the line was cleaned—prove it.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Triggers digital hygiene checklists based on your rules. Creates a permanent, audit-ready digital record in Business Central before the job starts.</p>
                     </div>
-                </div>
-                <div class="h-screen flex items-center trigger-scene" data-scene="variance">
-                    <div class="max-w-md scrolly-text-block">
+
+                    <!-- Scene 2: Variance Killer -->
+                    <div id="text-variance" class="scrolly-text-block text-left">
                         <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6">Scene 02: Variance Killer</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Stop the end-of-shift guessing game.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Real-time consumption tracking compares 'Actual vs. Theoretical' usage instantly. Get instant Yield & Waste Reports to identify over-consumption trends immediately.</p>
                     </div>
-                </div>
-                <div class="h-screen flex items-center trigger-scene" data-scene="compliance">
-                    <div class="max-w-md scrolly-text-block">
+
+                    <!-- Scene 3: Inbound Compliance -->
+                    <div id="text-compliance" class="scrolly-text-block text-left">
                         <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Scene 03: Inbound Compliance</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">The Digital Gatekeeper.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Before goods enter the building, force a mandatory Trailer Inspection (odours, pests, temp) via the Modax App. Creates a permanent audit trail linked to the PO Receipt.</p>
                     </div>
-                </div>
-                <div class="h-screen flex items-center trigger-scene" data-scene="aura">
-                    <div class="max-w-md scrolly-text-block">
+
+                    <!-- Scene 4: Project Aura -->
+                    <div id="text-aura" class="scrolly-text-block text-left">
                         <h4 class="text-purple-500 font-black uppercase tracking-[0.3em] mb-6">Scene 04: Project Aura</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Bio-Aesthetic AI.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Where Modax R&D meets human performance. Advanced biometric fusion for the next generation of workforce wellness and computer vision accuracy.</p>
@@ -337,7 +342,7 @@
             
             <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
                 <p class="text-slate-500 text-sm font-bold">© 2026 Modax Consulting Inc. All Rights Reserved.</p>
-                <a href="#" class="text-2xl font-black text-white hover:text-[#0078D4] transition-all tracking-tight group">
+                <a href="#" class="text-2xl font-black text-white hover:text-[#0078D4] transition-all tracking-tight group text-right">
                     Let's Build the Future <span class="inline-block transition-transform group-hover:translate-x-2">→</span>
                 </a>
             </div>
@@ -351,9 +356,9 @@
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <div class="p-16">
-                <h2 id="modalTitle" class="text-4xl font-black text-white mb-10 tracking-tight">Legal Notice</h2>
-                <div id="modalContent" class="text-slate-300 text-xl leading-relaxed space-y-6 max-h-[50vh] overflow-y-auto pr-4"></div>
-                <div class="mt-12">
+                <h2 id="modalTitle" class="text-4xl font-black text-white mb-10 tracking-tight text-left">Legal Notice</h2>
+                <div id="modalContent" class="text-slate-300 text-xl leading-relaxed space-y-6 max-h-[50vh] overflow-y-auto pr-4 text-left"></div>
+                <div class="mt-12 text-left">
                     <button onclick="closeLegalModal()" class="bg-[#0078D4] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all">Dismiss</button>
                 </div>
             </div>
@@ -400,37 +405,53 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // SCROLLYTELLING LOGIC
+        // SCROLL PROGRESS HUB LOGIC (Apple-style Double-Sticky Stack)
+        const innovationSection = document.getElementById('innovation');
         const visualPanels = {
             shield: document.getElementById('visual-shield'),
             variance: document.getElementById('visual-variance'),
             compliance: document.getElementById('visual-compliance'),
             aura: document.getElementById('visual-aura')
         };
+        const textBlocks = {
+            intro: document.getElementById('hub-intro'),
+            shield: document.getElementById('text-shield'),
+            variance: document.getElementById('text-variance'),
+            compliance: document.getElementById('text-compliance'),
+            aura: document.getElementById('text-aura')
+        };
 
-        const scrollyObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const scene = entry.target.dataset.scene;
-                    
-                    // Update Visual Panels
-                    Object.values(visualPanels).forEach(p => p.classList.remove('active'));
-                    if (visualPanels[scene]) visualPanels[scene].classList.add('active');
+        function updateInnovationHub() {
+            const rect = innovationSection.getBoundingClientRect();
+            const totalHeight = innovationSection.offsetHeight;
+            const scrollPos = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrollPos / (totalHeight - window.innerHeight)));
 
-                    // Update Text Focus (Stationary Fade Effect)
-                    document.querySelectorAll('.scrolly-text-block').forEach(block => {
-                        block.classList.remove('active');
-                    });
-                    const activeBlock = entry.target.querySelector('.scrolly-text-block');
-                    if (activeBlock) activeBlock.classList.add('active');
-                }
-            });
-        }, { 
-            threshold: 0.5, 
-            rootMargin: '-5% 0px -5% 0px' 
-        });
+            // Reset all
+            Object.values(textBlocks).forEach(t => t.classList.remove('active'));
+            Object.values(visualPanels).forEach(p => p.classList.remove('active'));
 
-        document.querySelectorAll('.trigger-scene').forEach(trigger => scrollyObserver.observe(trigger));
+            if (progress < 0.1) {
+                textBlocks.intro.classList.add('active');
+                visualPanels.shield.classList.add('active'); // Default icon
+            } else if (progress < 0.3) {
+                textBlocks.shield.classList.add('active');
+                visualPanels.shield.classList.add('active');
+            } else if (progress < 0.55) {
+                textBlocks.variance.classList.add('active');
+                visualPanels.variance.classList.add('active');
+            } else if (progress < 0.8) {
+                textBlocks.compliance.classList.add('active');
+                visualPanels.compliance.classList.add('active');
+            } else {
+                textBlocks.aura.classList.add('active');
+                visualPanels.aura.classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateInnovationHub);
+        window.addEventListener('resize', updateInnovationHub);
+        updateInnovationHub(); // Initial call
     </script>
 </body>
 </html>

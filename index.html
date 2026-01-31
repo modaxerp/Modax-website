@@ -95,11 +95,11 @@
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            transform: scale(0.9) translateY(0); /* Static vertical, slight scale */
+            transform: scale(0.9);
         }
         .visual-panel.active {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: scale(1);
         }
 
         .neon-glass {
@@ -111,31 +111,32 @@
             box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Stationary Spotlight Scrollytelling Classes */
+        /* Stationary Spotlight Scrollytelling Classes - NO MOVEMENT */
         .scrolly-text-block {
             opacity: 0.2;
             filter: blur(4px);
-            transform: translateY(0); /* REMOVED vertical movement */
-            transition: all 0.7s ease-in-out;
+            transform: none !important; /* Force no movement */
+            transition: opacity 0.7s ease-in-out, filter 0.7s ease-in-out;
             will-change: opacity, filter;
         }
         .scrolly-text-block.active {
             opacity: 1;
             filter: blur(0);
+            transform: none !important;
         }
 
-        /* Navbar Sizing - INCREASED for contained logo */
+        /* Navbar Sizing - SOLID WHITE */
         nav { height: 8rem; }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
-    <!-- Header/Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center bg-white/95 backdrop-blur-md border-b border-gray-100">
+    <!-- Header/Navigation - SOLID WHITE FIX -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
             <div class="flex items-center h-full">
-                <!-- LOGO: Fully contained, professional height -->
+                <!-- LOGO: Contained in white bar -->
                 <a href="/" class="flex items-center">
-                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain transition-all duration-500">
+                    <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
                 </a>
             </div>
             
@@ -143,7 +144,7 @@
                 <!-- SOLUTIONS DROPDOWN: Majestic Glass -->
                 <div class="group relative flex items-center h-full">
                     <a href="#solutions" class="nav-wow-hover py-10 cursor-pointer">Solutions</a>
-                    <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A]/90 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
+                    <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A]/95 backdrop-blur-3xl border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8">
                             <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
                                 <h4 class="text-white text-2xl font-black mb-2">Dynamics 365 F&O</h4>
@@ -184,7 +185,7 @@
         </div>
     </nav>
 
-    <!-- Spacer to match new Nav Height -->
+    <!-- Spacer to match Nav Height -->
     <div class="h-[8rem]"></div>
 
     <!-- Hero Section -->
@@ -267,7 +268,7 @@
                 </div>
             </div>
 
-            <!-- Right Side: STATIONARY FADE TEXT -->
+            <!-- Right Side: STATIONARY FADE TEXT - NO MOVEMENT -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24">
                 <div class="h-screen flex items-center trigger-scene" data-scene="shield">
                     <div class="max-w-md scrolly-text-block active">

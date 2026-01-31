@@ -71,14 +71,6 @@
             transform: translateX(6px);
         }
 
-        /* Innovation Hub Card Glow */
-        .innovation-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .innovation-card:hover {
-            box-shadow: inset 0 0 30px rgba(34, 211, 238, 0.05), 0 20px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
         /* Scroll Reveal Animations (Apple-Style) */
         .reveal {
             opacity: 0;
@@ -90,10 +82,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
 
         /* Modal Transitions */
         #legalModal {
@@ -104,6 +92,57 @@
             visibility: hidden;
             display: flex; /* keep flex but hide opacity */
         }
+
+        /* Scrollytelling Visual Elements */
+        .visual-panel {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .visual-panel.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .neon-shield {
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, transparent 70%);
+            border: 2px solid rgba(34, 211, 238, 0.5);
+            border-radius: 40px;
+            box-shadow: 0 0 80px rgba(34, 211, 238, 0.3);
+            position: relative;
+        }
+        .neon-target {
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 80%);
+            border: 2px solid rgba(239, 68, 68, 0.5);
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(239, 68, 68, 0.3);
+            position: relative;
+        }
+        .neon-gate {
+            width: 400px; height: 260px;
+            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), transparent);
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            border-bottom: none;
+            border-radius: 40px 40px 0 0;
+            box-shadow: 0 -20px 80px rgba(59, 130, 246, 0.3);
+            position: relative;
+        }
+        .neon-mesh {
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            border-radius: 50%;
+            box-shadow: 0 0 100px rgba(168, 85, 247, 0.4);
+            position: relative;
+        }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
@@ -111,7 +150,7 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 py-6 px-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="flex items-center">
-                <!-- FIX HEADER LOGO (The Big One): Forced to h-48 as requested -->
+                <!-- RETAINED HEADER LOGO (h-48) -->
                 <a href="/" class="flex items-center">
                     <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-48 w-auto object-contain transition-all duration-500 origin-left">
                 </a>
@@ -299,66 +338,84 @@
         </div>
     </section>
 
-    <!-- Innovation Hub -->
-    <section id="innovation" class="py-40 bg-[#0F172A] relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]"></div>
+    <!-- Innovation Scrollytelling Section -->
+    <section id="innovation" class="bg-[#0F172A]">
+        <div class="max-w-7xl mx-auto px-6 py-32 text-center reveal">
+            <h2 class="text-sm font-black text-cyan-400 tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
+            <h3 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">The Innovation Hub</h3>
+            <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Pioneering the future of intelligent supply chain logic.</p>
         </div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-28 reveal">
-                <h2 class="text-sm font-black text-cyan-400 tracking-[0.5em] uppercase mb-8">Proprietary R&D</h2>
-                <h3 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">The Innovation Hub</h3>
-                <p class="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl mx-auto">Where Modax R&D meets real-world efficiency. Pioneering next-gen supply chain logic.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-left">
-                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-100">
-                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        
+        <div class="relative h-[400vh]">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <!-- Left: Sticky Visual Side -->
+                <div class="w-full md:w-1/2 h-1/2 md:h-full relative flex items-center justify-center overflow-hidden border-r border-white/5 bg-[#0F172A]">
+                    <!-- Step 1: Audit Shield -->
+                    <div id="visual-shield" class="visual-panel active">
+                        <div class="neon-shield flex flex-col items-center justify-center p-8">
+                            <svg class="w-24 h-24 text-cyan-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            <span class="text-white text-xs font-black tracking-[0.3em] uppercase opacity-40">Protocol Verification</span>
+                        </div>
                     </div>
-                    <h4 class="text-3xl font-black text-white mb-6">Audit Shield</h4>
-                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Digital evidence for line clearance. Subjectivity eliminated through proprietary verification algorithms that ensure absolute compliance.</p>
-                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Protocol 4.0 Active</span>
-                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <!-- Step 2: Variance Killer -->
+                    <div id="visual-variance" class="visual-panel">
+                        <div class="neon-target flex flex-col items-center justify-center">
+                            <div class="w-48 h-48 border-2 border-red-500/30 rounded-full animate-ping absolute"></div>
+                            <svg class="w-24 h-24 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
                     </div>
-                </div>
-
-                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-200">
-                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <!-- Step 3: Inbound Compliance -->
+                    <div id="visual-compliance" class="visual-panel">
+                        <div class="neon-gate flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-blue-500/5 backdrop-blur-sm"></div>
+                            <svg class="w-24 h-24 text-blue-500 mb-4 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                            <span class="text-blue-400 text-[10px] font-black tracking-[0.5em] uppercase z-10">Gate Access Verified</span>
+                        </div>
                     </div>
-                    <h4 class="text-3xl font-black text-white mb-6">Variance Killer</h4>
-                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Real-time "Actual vs Theoretical" consumption tracking. Locate operational leaks and material loss the moment they occur on the shop floor.</p>
-                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Zero-Loss Syncing</span>
-                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                    </div>
-                </div>
-
-                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-300">
-                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    </div>
-                    <h4 class="text-3xl font-black text-white mb-6">Inbound Compliance</h4>
-                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Digital gatekeeper for trailer inspection and receiving. Integrated OCR and computer vision validate every shipment against the digital twin.</p>
-                    <div class=\"mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500\">
-                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Gate-Keeper AI 2.0</span>
-                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <!-- Step 4: Project Aura -->
+                    <div id="visual-aura" class="visual-panel">
+                        <div class="neon-mesh flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 overflow-hidden rounded-full">
+                                <div class="w-full h-full bg-gradient-to-tr from-purple-500/20 to-transparent animate-spin-slow"></div>
+                            </div>
+                            <svg class="w-24 h-24 text-purple-400 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
                     </div>
                 </div>
 
-                <div class="innovation-card group bg-white/5 backdrop-blur-lg border border-white/10 p-12 rounded-[3rem] flex flex-col hover:border-cyan-400 hover:-translate-y-2 reveal delay-400">
-                    <div class="w-20 h-20 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-10 group-hover:bg-cyan-400 group-hover:text-[#0F172A] transition-all duration-500 text-cyan-400">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <!-- Right: Natural Scroll Narrative -->
+                <div class="w-full md:w-1/2 h-full flex flex-col">
+                    <!-- Step 1 Trigger -->
+                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="shield">
+                        <div class="text-left">
+                            <h4 class="text-cyan-400 font-black uppercase tracking-[0.3em] mb-4 text-sm">Audit Shield</h4>
+                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Don't just hope the line was cleaned—prove it.</h3>
+                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Digital hygiene checklists created instantly. We replace subjective verification with data-backed evidence.</p>
+                        </div>
                     </div>
-                    <h4 class="text-3xl font-black text-white mb-6">Project Aura</h4>
-                    <p class="text-slate-400 text-lg leading-relaxed font-medium">Bio-Aesthetic AI & Computer Vision Lab. We're engineering cameras that "understand" aesthetics and quality for luxury manufacturing.</p>
-                    <div class="mt-10 pt-10 border-t border-white/5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span class="text-cyan-400 text-sm font-black uppercase tracking-widest">Vision Core Online</span>
-                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <!-- Step 2 Trigger -->
+                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="variance">
+                        <div class="text-left">
+                            <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-4 text-sm">Variance Killer</h4>
+                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Eliminate the end-of-shift guessing game.</h3>
+                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Real-time consumption tracking. Our algorithms identify material loss the micro-second it happens on the floor.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 Trigger -->
+                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="compliance">
+                        <div class="text-left">
+                            <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-4 text-sm">Inbound Compliance</h4>
+                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Digital gatekeeper for your warehouse.</h3>
+                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Nothing enters without a digital audit trail. Seamless trailer inspection and receipt validation built into the core logic.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 Trigger -->
+                    <div class="h-screen flex items-center justify-center px-8 md:px-24 trigger-step" data-step="aura">
+                        <div class="text-left">
+                            <h4 class="text-purple-400 font-black uppercase tracking-[0.3em] mb-4 text-sm">Project Aura</h4>
+                            <h3 class="text-white text-4xl md:text-6xl font-black leading-tight mb-8">Bio-Aesthetic AI and Computer Vision.</h3>
+                            <p class="text-slate-400 text-xl md:text-2xl leading-relaxed">Where Modax R&D meets human performance. Cameras that understand quality standards and aesthetics at an enterprise scale.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -370,7 +427,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start mb-24 gap-12 text-left">
                 <div class="max-w-md">
-                    <!-- FOOTER LOGO BADGE: Keeping the white container fix -->
+                    <!-- RETAINED FOOTER LOGO BADGE (White Container Fix) -->
                     <div class="bg-white rounded-lg p-3 w-40 mb-10 shadow-xl flex items-center justify-center overflow-hidden">
                         <img src="logo.png" alt="Modax ERP" class="h-10 w-auto block object-contain">
                     </div>
@@ -391,7 +448,6 @@
                         <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Solutions</h4>
                         <ul class="space-y-5 text-md text-slate-300 font-bold">
                             <li><a href="#solutions" class="hover:text-cyan-400 transition-colors">Dynamics 365 F&O</a></li>
-                            <!-- KEEP TEXT: Microsoft D365 Business Central -->
                             <li><a href="#solutions" class="hover:text-cyan-400 transition-colors">Microsoft D365 Business Central</a></li>
                             <li><a href="#solutions" class="hover:text-cyan-400 transition-colors">Modax WMS</a></li>
                             <li><a href="#innovation" class="hover:text-cyan-400 transition-colors">Innovation Lab</a></li>
@@ -400,7 +456,7 @@
                     <div>
                         <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Legal</h4>
                         <ul class="space-y-5 text-md text-slate-400 font-bold">
-                            <!-- Activated legal links with JS -->
+                            <!-- RETAINED LEGAL MODALS -->
                             <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="hover:text-white transition-colors">Privacy Policy</a></li>
                             <li><a href="javascript:void(0)" onclick="openLegalModal('terms')" class="hover:text-white transition-colors">Terms of Service</a></li>
                             <li><a href="javascript:void(0)" onclick="openLegalModal('cookies')" class="hover:text-white transition-colors">Cookie Policy</a></li>
@@ -491,54 +547,67 @@
                 title.innerText = legalData[type].title;
                 content.innerHTML = legalData[type].content;
                 modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent scroll
+                document.body.style.overflow = 'hidden'; 
             }
         }
 
         function closeLegalModal() {
             const modal = document.getElementById('legalModal');
             modal.classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scroll
+            document.body.style.overflow = ''; 
         }
 
-        // Close modal on escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLegalModal();
         });
 
-        // Close modal on click outside
         document.getElementById('legalModal').addEventListener('click', (e) => {
             if (e.target.id === 'legalModal') closeLegalModal();
         });
 
-        // Navbar scroll logic - Keeps the huge h-48 logo as base but handles scrolling state
+        // Navbar Scroll Handling - Maintain huge h-48 logo scaling
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) { 
                 nav.classList.add('nav-scrolled'); 
-            }
-            else { 
+            } else { 
                 nav.classList.remove('nav-scrolled'); 
             }
         });
 
-        // Intersection Observer for Scroll Reveal Animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Intersection Observer for General Reveal Elements
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Scrollytelling Visual Switching Logic
+        const visualPanels = {
+            shield: document.getElementById('visual-shield'),
+            variance: document.getElementById('visual-variance'),
+            compliance: document.getElementById('visual-compliance'),
+            aura: document.getElementById('visual-aura')
+        };
+
+        const scrollyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    const step = entry.target.dataset.step;
+                    // Deactivate all panels
+                    Object.values(visualPanels).forEach(p => p.classList.remove('active'));
+                    // Activate current step panel
+                    if (visualPanels[step]) visualPanels[step].classList.add('active');
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px 0px -20% 0px'
         });
+
+        document.querySelectorAll('.trigger-step').forEach(trigger => scrollyObserver.observe(trigger));
     </script>
 </body>
 </html>

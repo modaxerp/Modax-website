@@ -129,7 +129,7 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
             <div class="flex items-center h-full">
-                <!-- LOGO: Fully contained in white bar -->
+                <!-- LOGO: Blends perfectly with white bar -->
                 <a href="/" class="flex items-center">
                     <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
                 </a>
@@ -222,10 +222,10 @@
         </div>
     </section>
 
-    <!-- INNOVATION HUB: LIQUID CROSS-FADE -->
-    <section id="innovation" class="relative bg-[#020617] text-white h-[300vh]">
+    <!-- INNOVATION HUB: ULTRA-FAST LIQUID CROSS-FADE (200vh) -->
+    <section id="innovation" class="relative bg-[#020617] text-white h-[200vh]">
         <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-            <!-- Left Column: Sticky Icon Stage -->
+            <!-- Left Column: Icons -->
             <div class="w-full md:w-1/2 flex items-center justify-center p-12">
                 <div class="relative w-full max-w-lg aspect-square">
                     <div class="neon-glass border-white/5 bg-white/[0.02] inset-0 absolute flex items-center justify-center">
@@ -255,31 +255,27 @@
                 </div>
             </div>
 
-            <!-- Right Column: Sticky Text Stack -->
+            <!-- Right Column: Stationary Cross-Fade Text -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24">
                 <div class="relative w-full h-full">
-                    <!-- Audit Shield -->
                     <div id="text-shield" class="scrolly-text-block text-left">
                         <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6">Audit Shield</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Don't just hope the line was cleaned—prove it.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Triggers digital hygiene checklists based on your rules. Creates a permanent, audit-ready digital record in Business Central before the job starts.</p>
                     </div>
 
-                    <!-- Variance Killer -->
                     <div id="text-variance" class="scrolly-text-block text-left">
                         <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6">Variance Killer</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Stop the end-of-shift guessing game.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Real-time consumption tracking compares 'Actual vs. Theoretical' usage instantly. Get instant Yield & Waste Reports to identify over-consumption trends immediately.</p>
                     </div>
 
-                    <!-- Inbound Compliance -->
                     <div id="text-compliance" class="scrolly-text-block text-left">
                         <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Inbound Compliance</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">The Digital Gatekeeper.</h3>
                         <p class="text-slate-400 text-xl leading-relaxed">Before goods enter the building, force a mandatory Trailer Inspection (odours, pests, temp) via the Modax App. Creates a permanent audit trail linked to the PO Receipt.</p>
                     </div>
 
-                    <!-- Project Aura -->
                     <div id="text-aura" class="scrolly-text-block text-left">
                         <h4 class="text-purple-500 font-black uppercase tracking-[0.3em] mb-6">Project Aura</h4>
                         <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Bio-Aesthetic AI.</h3>
@@ -369,7 +365,7 @@
             document.body.style.overflow = '';
         }
 
-        // Reveal effect for general sections
+        // Standard reveal logic
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -377,7 +373,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // LIQUID SCROLL HUB LOGIC
+        // FAST LIQUID SCROLL HUB LOGIC
         const innovationSection = document.getElementById('innovation');
         const visualPanels = [
             document.getElementById('visual-shield'),
@@ -392,25 +388,24 @@
             document.getElementById('text-aura')
         ];
 
-        // Ranges: 
-        // 0: visible 0.0-0.2, fade-out 0.2-0.3
-        // 1: fade-in 0.2-0.3, visible 0.3-0.5, fade-out 0.5-0.6
-        // 2: fade-in 0.5-0.6, visible 0.6-0.8, fade-out 0.8-0.9
-        // 3: fade-in 0.8-0.9, visible 0.9-1.0
+        // SENSITIVITY FIX: Compressed ranges for rapid fire interaction
+        // Overlapping ranges ensure no dead air
         const ranges = [
-            { startIn: 0.0, startVis: 0.0, endVis: 0.2, endOut: 0.3 },
-            { startIn: 0.2, startVis: 0.3, endVis: 0.5, endOut: 0.6 },
-            { startIn: 0.5, startVis: 0.6, endVis: 0.8, endOut: 0.9 },
-            { startIn: 0.8, startVis: 0.9, endVis: 1.0, endOut: 1.0 }
+            { startIn: 0.0, startVis: 0.0, endVis: 0.1, endOut: 0.3 },
+            { startIn: 0.1, startVis: 0.3, endVis: 0.4, endOut: 0.6 },
+            { startIn: 0.4, startVis: 0.6, endVis: 0.7, endOut: 0.9 },
+            { startIn: 0.7, startVis: 0.9, endVis: 1.0, endOut: 1.0 }
         ];
 
         function getOpacity(progress, range) {
             if (progress < range.startIn) return 0;
             if (progress < range.startVis) {
+                // Fade In
                 return (progress - range.startIn) / (range.startVis - range.startIn);
             }
             if (progress <= range.endVis) return 1;
             if (progress < range.endOut) {
+                // Fade Out
                 return 1 - (progress - range.endVis) / (range.endOut - range.endVis);
             }
             return 0;
@@ -421,18 +416,22 @@
             const totalHeight = innovationSection.offsetHeight;
             const scrollPos = -rect.top;
             const viewPortAdjustment = window.innerHeight;
+            
+            // Calculate progress (0.0 to 1.0)
             const progress = Math.max(0, Math.min(1, scrollPos / (totalHeight - viewPortAdjustment)));
 
             textBlocks.forEach((block, i) => {
                 const opacity = getOpacity(progress, ranges[i]);
-                const blur = (1 - opacity) * 12;
-                block.style.opacity = opacity;
-                block.style.filter = `blur(${blur}px)`;
-                block.style.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
+                const blurValue = (1 - opacity) * 15; // Deeper blur for punchier feel
                 
-                // Sync Visual Panels
-                visualPanels[i].style.opacity = opacity;
-                visualPanels[i].style.transform = `scale(${0.9 + (opacity * 0.1)})`;
+                block.style.opacity = opacity;
+                block.style.filter = `blur(${blurValue}px)`;
+                block.style.pointerEvents = opacity > 0.4 ? 'auto' : 'none';
+                
+                // Sync Visuals
+                const visual = visualPanels[i];
+                visual.style.opacity = opacity;
+                visual.style.transform = `scale(${0.85 + (opacity * 0.15)})`;
             });
         }
 
@@ -448,7 +447,7 @@
         });
         
         window.addEventListener('resize', updateInnovationHub);
-        updateInnovationHub(); // Initialize
+        updateInnovationHub(); // Initial run
     </script>
 </body>
 </html>

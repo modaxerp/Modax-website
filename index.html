@@ -73,13 +73,6 @@
             transform: translateY(0);
         }
 
-        /* Heartbeat Pulse Animation */
-        @keyframes heartbeat {
-            0% { transform: scale(1); opacity: 0.7; }
-            14% { transform: scale(1.1); opacity: 1; }
-            28% { transform: scale(1); opacity: 0.7; }
-        }
-
         /* Scrollytelling Visual Panels */
         .visual-panel {
             opacity: 0;
@@ -94,24 +87,25 @@
         }
 
         .ui-card-container {
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
         .glass-ui-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 380px;
-            transform: rotateX(10deg) rotateY(-10deg);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            padding: 36px;
+            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.6);
+            width: 400px;
+            transform-style: preserve-3d;
+            transform: rotateX(8deg) rotateY(-12deg);
         }
 
         .bg-photo-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.8));
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.6), rgba(2, 6, 23, 0.9));
             z-index: 1;
         }
 
@@ -129,6 +123,15 @@
             transition: none;
         }
 
+        /* Revenue Graph Animation */
+        @keyframes graphUp {
+            from { height: 10%; }
+            to { height: var(--h); }
+        }
+        .graph-bar {
+            animation: graphUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
         nav { height: 8rem; }
     </style>
 </head>
@@ -144,7 +147,7 @@
             
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
                 <div class="group relative flex items-center h-full">
-                    <a href="#solutions" class="nav-wow-hover py-10 cursor-pointer">Solutions</a>
+                    <a href="#solutions" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Solutions</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A] border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 text-left">
                             <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all">
@@ -164,7 +167,7 @@
                 </div>
 
                 <div class="group relative flex items-center h-full">
-                    <a href="#industries" class="nav-wow-hover py-10 cursor-pointer">Industries</a>
+                    <a href="#industries" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Industries</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A] border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-4 gap-4 text-white font-bold text-left">
                             <a href="#" class="p-6 rounded-2xl hover:bg-white/5 transition-all">Manufacturing</a>
@@ -175,8 +178,8 @@
                     </div>
                 </div>
 
-                <a href="#innovation" class="nav-wow-hover py-10">Innovation</a>
-                <a href="#company" class="nav-wow-hover py-10">Company</a>
+                <a href="#innovation" class="nav-wow-hover py-10 text-slate-900">Innovation</a>
+                <a href="#company" class="nav-wow-hover py-10 text-slate-900">Company</a>
             </div>
 
             <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/20 active:scale-95">
@@ -210,7 +213,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-24 text-center max-w-3xl mx-auto reveal">
                 <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Capabilities</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight">Enterprise Performance. Delivered.</h3>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight text-center">Enterprise Performance. Delivered.</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
@@ -228,123 +231,140 @@
         </div>
     </section>
 
-    <!-- STICKY ERP JOURNEY SECTION (REPLACES INNOVATION HUB) -->
-    <section id="innovation" class="relative bg-[#020617] text-white h-[200vh]">
+    <!-- STICKY ERP JOURNEY SECTION -->
+    <section id="innovation" class="relative bg-[#020617] text-white h-[250vh]">
         <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-            <!-- Left Column: Photo-in-Photo Visuals -->
+            
+            <!-- Left Column: Photo-in-Photo Visuals with LIVE DATA WIDGETS -->
             <div class="w-full md:w-1/2 relative h-1/2 md:h-full overflow-hidden">
                 
-                <!-- Step 1: Global Logistics / F&O -->
+                <!-- Step 1: Global Machine / F&O -->
                 <div id="visual-step-1" class="visual-panel">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" alt="Global Logistics" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200" alt="Global Supply Chain" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
                     <div class="relative z-10 ui-card-container">
                         <div class="glass-ui-card">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="h-6 w-32 bg-blue-500/40 rounded-full"></div>
-                                <div class="h-6 w-6 bg-white/20 rounded-full"></div>
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-xs font-black uppercase tracking-widest text-blue-400">Global Supply Chain Status</span>
+                                <div class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
                             </div>
-                            <div class="space-y-4">
-                                <div class="h-32 w-full bg-white/5 rounded-xl border border-white/10 flex flex-col justify-end p-4">
-                                    <div class="h-2 w-full bg-white/10 rounded mb-2"></div>
-                                    <div class="h-2 w-2/3 bg-white/10 rounded"></div>
+                            <div class="mb-10">
+                                <div class="flex justify-between items-end mb-4">
+                                    <span class="text-3xl font-black text-white">98.4%</span>
+                                    <span class="text-xs text-emerald-400 font-bold">OPTIMIZED</span>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="h-16 bg-blue-500/20 rounded-xl border border-blue-500/30"></div>
-                                    <div class="h-16 bg-white/5 rounded-xl border border-white/10"></div>
+                                <div class="w-full bg-white/10 h-3 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full w-[98%] transition-all duration-1000"></div>
                                 </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="h-1 bg-white/40 rounded"></div>
+                                <div class="h-1 bg-white/40 rounded"></div>
+                                <div class="h-1 bg-white/10 rounded"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2: Modern Office / BC -->
+                <!-- Step 2: Scale Cloud / BC -->
                 <div id="visual-step-2" class="visual-panel">
-                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" alt="Modern Office" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Modern Analytics" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
                     <div class="relative z-10 ui-card-container">
                         <div class="glass-ui-card">
-                            <div class="h-8 w-40 bg-white/10 rounded mb-8"></div>
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-4">
-                                    <div class="h-10 w-10 bg-blue-500/40 rounded-lg"></div>
-                                    <div class="h-4 w-3/4 bg-white/10 rounded"></div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <div class="h-10 w-10 bg-white/10 rounded-lg"></div>
-                                    <div class="h-4 w-1/2 bg-white/10 rounded"></div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <div class="h-10 w-10 bg-white/10 rounded-lg"></div>
-                                    <div class="h-4 w-2/3 bg-white/10 rounded"></div>
-                                </div>
+                            <h5 class="text-xs font-black uppercase tracking-widest text-blue-400 mb-8">Monthly Revenue Projection</h5>
+                            <div class="flex items-end space-x-3 h-40 mb-6">
+                                <div class="graph-bar flex-1 bg-white/10 rounded-t-lg" style="--h: 30%"></div>
+                                <div class="graph-bar flex-1 bg-white/20 rounded-t-lg" style="--h: 45%"></div>
+                                <div class="graph-bar flex-1 bg-white/30 rounded-t-lg" style="--h: 40%"></div>
+                                <div class="graph-bar flex-1 bg-blue-500/60 rounded-t-lg" style="--h: 65%"></div>
+                                <div class="graph-bar flex-1 bg-blue-500 rounded-t-lg" style="--h: 90%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+                                <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><span class="text-blue-400">Target</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3: Warehouse Scanning / Modax WMS -->
+                <!-- Step 3: Warehouse Intelligence / Modax WMS -->
                 <div id="visual-step-3" class="visual-panel">
-                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=1200" alt="Warehouse Operations" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=1200" alt="Warehouse Workflow" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
                     <div class="relative z-10 ui-card-container">
-                        <div class="glass-ui-card" style="width: 300px;">
-                            <div class="text-center mb-8">
-                                <div class="inline-block p-4 bg-blue-500/30 rounded-full mb-4">
-                                    <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                        <div class="glass-ui-card">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-emerald-500/20">
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                 </div>
-                                <h5 class="text-white font-bold text-lg">Modax WMS Mobile</h5>
+                                <h5 class="text-white font-black text-2xl mb-2">99.9% Accuracy</h5>
+                                <p class="text-xs tracking-widest text-emerald-400 font-black uppercase">Order Picking Precision</p>
+                                <div class="mt-8 pt-8 border-t border-white/10 w-full grid grid-cols-2 gap-4">
+                                    <div class="text-left"><span class="block text-[10px] text-slate-400 font-bold uppercase">Latency</span><span class="text-white font-bold">0.02ms</span></div>
+                                    <div class="text-left"><span class="block text-[10px] text-slate-400 font-bold uppercase">Nodes</span><span class="text-white font-bold">Live</span></div>
+                                </div>
                             </div>
-                            <div class="h-12 w-full bg-blue-500 rounded-lg flex items-center justify-center font-bold">SCAN READY</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 4: Boardroom / Strategy -->
+                <!-- Step 4: Executive Insights / Strategy -->
                 <div id="visual-step-4" class="visual-panel">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Executive Strategy" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200" alt="Executive Meeting" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
                     <div class="relative z-10 ui-card-container">
                         <div class="glass-ui-card">
-                            <div class="flex items-end space-x-2 h-32 mb-6">
-                                <div class="w-1/4 bg-blue-500/20 h-1/2 rounded-t-lg"></div>
-                                <div class="w-1/4 bg-blue-500/40 h-3/4 rounded-t-lg"></div>
-                                <div class="w-1/4 bg-blue-500/60 h-2/3 rounded-t-lg"></div>
-                                <div class="w-1/4 bg-blue-500 h-full rounded-t-lg"></div>
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="text-xs font-black uppercase tracking-widest text-blue-400">Strategic Performance Index</span>
+                                <span class="bg-white/10 px-3 py-1 rounded text-[10px] font-bold">REAL-TIME</span>
                             </div>
-                            <div class="h-4 w-3/4 bg-white/20 rounded mb-2"></div>
-                            <div class="h-4 w-1/2 bg-white/10 rounded"></div>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-200 text-sm font-bold">Growth Potential</span>
+                                    <span class="text-blue-400 font-black">+14.2%</span>
+                                </div>
+                                <div class="h-[1px] bg-white/10 w-full"></div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-200 text-sm font-bold">Risk Exposure</span>
+                                    <span class="text-emerald-400 font-black">LOW</span>
+                                </div>
+                                <div class="h-[1px] bg-white/10 w-full"></div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-200 text-sm font-bold">Capital Efficiency</span>
+                                    <span class="text-white font-black">92.4</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Stationary Cross-Fade Text -->
+            <!-- Right Column: Stationary Cross-Fade Text with CATEGORY TAGS -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24 h-1/2 md:h-full">
                 <div class="relative w-full h-full">
                     
                     <div id="text-step-1" class="scrolly-text-block text-left">
-                        <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Step 01</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Dynamics 365 Finance & Operations</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Enterprise-grade resource planning. Orchestrate complex global manufacturing and supply chains with a unified digital core.</p>
+                        <span class="inline-block bg-[#0078D4] text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest mb-10">ENTERPRISE BACKBONE</span>
+                        <h3 class="text-4xl md:text-5xl font-black mb-10 leading-tight">Orchestrate the Global Machine.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Don't just manage resources; synchronize them. A unified digital core for complex manufacturing and multi-entity supply chains. One truth, worldwide.</p>
                     </div>
 
                     <div id="text-step-2" class="scrolly-text-block text-left">
-                        <h4 class="text-blue-400 font-black uppercase tracking-[0.3em] mb-6">Step 02</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Dynamics 365 Business Central</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Agile, cloud-native ERP. Scale your growing business with speed, adaptability, and seamless Microsoft cloud integration.</p>
+                        <span class="inline-block bg-white/10 border border-white/20 text-blue-400 px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest mb-10">AGILE CLOUD CORE</span>
+                        <h3 class="text-4xl md:text-5xl font-black mb-10 leading-tight">Scale at the Speed of Cloud.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Stop paying for infrastructure. Start investing in growth. The agile, cloud-native ERP that evolves as fast as your market demands.</p>
                     </div>
 
                     <div id="text-step-3" class="scrolly-text-block text-left">
-                        <h4 class="text-blue-300 font-black uppercase tracking-[0.3em] mb-6">Step 03</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Modax WMS & Intelligence</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Embedded Warehouse Intelligence. We bridge the gap between physical operations and digital efficiency with our proprietary WMS layer.</p>
+                        <span class="inline-block bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest mb-10">EMBEDDED INTELLIGENCE</span>
+                        <h3 class="text-4xl md:text-5xl font-black mb-10 leading-tight">The Warehouse Black Box, Opened.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">No external connectors. No latency. Proprietary logic embedded directly inside Business Central to bridge the gap between physical stock and digital records.</p>
                     </div>
 
                     <div id="text-step-4" class="scrolly-text-block text-left">
-                        <h4 class="text-white font-black uppercase tracking-[0.3em] mb-6">Step 04</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Strategic Growth</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Data-Driven Decision Making. Transform raw data into actionable financial insights for C-Level strategy and future-proof scaling.</p>
+                        <span class="inline-block bg-blue-500/20 border border-blue-500/30 text-white px-4 py-1.5 rounded-full text-[11px] font-black tracking-widest mb-10">C-LEVEL INSIGHTS</span>
+                        <h3 class="text-4xl md:text-5xl font-black mb-10 leading-tight">Turn Data into Doctrine.</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Move beyond spreadsheets. Real-time financial modeling and predictive analytics that give the C-Suite the confidence to pull the trigger on expansion.</p>
                     </div>
                 </div>
             </div>
@@ -363,8 +383,8 @@
                     <p class="text-slate-500 text-sm">2233 Argentia Rd. East Tower Suite 302,<br>Mississauga, Ontario L5N 2X7, Canada</p>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-24">
-                    <div class="text-left">
+                <div class="grid grid-cols-2 gap-24 text-left">
+                    <div>
                         <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Expertise</h4>
                         <ul class="space-y-5 text-md text-slate-300 font-bold">
                             <li><a href="#" class="hover:text-blue-400 transition-colors">Microsoft D365 Business Central</a></li>
@@ -372,7 +392,7 @@
                             <li><a href="#" class="hover:text-blue-400 transition-colors">Modax WMS</a></li>
                         </ul>
                     </div>
-                    <div class="text-left">
+                    <div>
                         <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Legal</h4>
                         <ul class="space-y-5 text-md text-slate-400 font-bold">
                             <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="hover:text-white transition-colors">Privacy Policy</a></li>
@@ -437,7 +457,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // FAST LIQUID SCROLL JOURNEY LOGIC
+        // RAPID LIQUID SCROLL JOURNEY LOGIC
         const innovationSection = document.getElementById('innovation');
         const visualPanels = [
             document.getElementById('visual-step-1'),
@@ -452,6 +472,7 @@
             document.getElementById('text-step-4')
         ];
 
+        // SENSITIVITY FIX: Compressed ranges for rapid fire interaction (Total Section 250vh)
         const ranges = [
             { startIn: 0.0, startVis: 0.0, endVis: 0.1, endOut: 0.3 },
             { startIn: 0.1, startVis: 0.3, endVis: 0.4, endOut: 0.6 },
@@ -485,10 +506,10 @@
                 const visual = visualPanels[i];
                 visual.style.opacity = opacity;
                 
-                // Photo-in-Photo Animation
+                // Photo-in-Photo Widget Animation
                 const uiCard = visual.querySelector('.ui-card-container');
                 if (uiCard) {
-                    uiCard.style.transform = `translateY(${(1 - opacity) * 50}px) rotateX(${10 * opacity}deg)`;
+                    uiCard.style.transform = `translateY(${(1 - opacity) * 60}px) rotateX(${8 * opacity}deg) rotateY(${-12 * opacity}deg)`;
                 }
             });
         }

@@ -75,14 +75,9 @@
 
         /* Heartbeat Pulse Animation */
         @keyframes heartbeat {
-            0% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
-            14% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 60px rgba(239, 68, 68, 0.6); }
-            28% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
-            42% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 60px rgba(239, 68, 68, 0.6); }
-            70% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
-        }
-        .animate-heartbeat {
-            animation: heartbeat 2s ease-in-out infinite;
+            0% { transform: scale(1); opacity: 0.7; }
+            14% { transform: scale(1.1); opacity: 1; }
+            28% { transform: scale(1); opacity: 0.7; }
         }
 
         /* Scrollytelling Visual Panels */
@@ -94,19 +89,33 @@
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            transition: none; /* Controlled by JS per-pixel */
+            overflow: hidden;
+            transition: none;
         }
 
-        .neon-glass {
-            background: rgba(255, 255, 255, 0.03);
+        .ui-card-container {
+            perspective: 1000px;
+        }
+
+        .glass-ui-card {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: 60px;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 380px;
+            transform: rotateX(10deg) rotateY(-10deg);
         }
 
-        /* Stationary Spotlight Scrollytelling Classes - NO MOVEMENT */
+        .bg-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.8));
+            z-index: 1;
+        }
+
+        /* Stationary Spotlight Scrollytelling Classes */
         .scrolly-text-block {
             position: absolute;
             top: 50%;
@@ -117,19 +126,17 @@
             filter: blur(10px);
             will-change: opacity, filter;
             pointer-events: none;
-            transition: none; /* Controlled by JS per-pixel for liquid feel */
+            transition: none;
         }
 
-        /* Navbar Sizing - FORCED SOLID WHITE */
         nav { height: 8rem; }
     </style>
 </head>
 <body class="bg-white text-[#1E293B] antialiased">
-    <!-- Header/Navigation - SOLID WHITE FIX FOR LOGO BLENDING -->
+    <!-- Header/Navigation - SOLID WHITE FOR LOGO BLENDING -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
             <div class="flex items-center h-full">
-                <!-- LOGO: Blends perfectly with white bar -->
                 <a href="/" class="flex items-center">
                     <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
                 </a>
@@ -178,7 +185,6 @@
         </div>
     </nav>
 
-    <!-- Header Spacer -->
     <div class="h-[8rem]"></div>
 
     <!-- Hero Section -->
@@ -207,79 +213,138 @@
                 <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight">Enterprise Performance. Delivered.</h3>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
                 <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <h4 class="text-3xl font-black mb-6 text-left">Dynamics 365 F&O</h4>
-                    <p class="text-slate-600 mb-8 text-xl leading-relaxed text-left">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
+                    <h4 class="text-3xl font-black mb-6">Dynamics 365 F&O</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
                     <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
                 <div class="bg-slate-50 p-16 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <h4 class="text-3xl font-black mb-6 text-left">Dynamics 365 Business Central</h4>
-                    <p class="text-slate-600 mb-8 text-xl leading-relaxed text-left">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
+                    <h4 class="text-3xl font-black mb-6">Dynamics 365 Business Central</h4>
+                    <p class="text-slate-600 mb-8 text-xl leading-relaxed">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
                     <a href="#" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INNOVATION HUB: ULTRA-FAST LIQUID CROSS-FADE (200vh) -->
+    <!-- STICKY ERP JOURNEY SECTION (REPLACES INNOVATION HUB) -->
     <section id="innovation" class="relative bg-[#020617] text-white h-[200vh]">
         <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-            <!-- Left Column: Icons -->
-            <div class="w-full md:w-1/2 flex items-center justify-center p-12">
-                <div class="relative w-full max-w-lg aspect-square">
-                    <div class="neon-glass border-white/5 bg-white/[0.02] inset-0 absolute flex items-center justify-center">
-                        <div id="visual-shield" class="visual-panel">
-                            <svg class="w-40 h-40 text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
+            <!-- Left Column: Photo-in-Photo Visuals -->
+            <div class="w-full md:w-1/2 relative h-1/2 md:h-full overflow-hidden">
+                
+                <!-- Step 1: Global Logistics / F&O -->
+                <div id="visual-step-1" class="visual-panel">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" alt="Global Logistics" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="bg-photo-overlay"></div>
+                    <div class="relative z-10 ui-card-container">
+                        <div class="glass-ui-card">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="h-6 w-32 bg-blue-500/40 rounded-full"></div>
+                                <div class="h-6 w-6 bg-white/20 rounded-full"></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-32 w-full bg-white/5 rounded-xl border border-white/10 flex flex-col justify-end p-4">
+                                    <div class="h-2 w-full bg-white/10 rounded mb-2"></div>
+                                    <div class="h-2 w-2/3 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-16 bg-blue-500/20 rounded-xl border border-blue-500/30"></div>
+                                    <div class="h-16 bg-white/5 rounded-xl border border-white/10"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="visual-variance" class="visual-panel">
-                            <svg class="w-40 h-40 text-red-500 animate-heartbeat drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke-width="1"></circle>
-                                <circle cx="12" cy="12" r="3" stroke-width="2"></circle>
-                                <path stroke-linecap="round" stroke-width="2" d="M12 2v4m0 12v4M2 12h4m12 0h4"></path>
-                            </svg>
+                    </div>
+                </div>
+
+                <!-- Step 2: Modern Office / BC -->
+                <div id="visual-step-2" class="visual-panel">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" alt="Modern Office" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="bg-photo-overlay"></div>
+                    <div class="relative z-10 ui-card-container">
+                        <div class="glass-ui-card">
+                            <div class="h-8 w-40 bg-white/10 rounded mb-8"></div>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-4">
+                                    <div class="h-10 w-10 bg-blue-500/40 rounded-lg"></div>
+                                    <div class="h-4 w-3/4 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="h-10 w-10 bg-white/10 rounded-lg"></div>
+                                    <div class="h-4 w-1/2 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="h-10 w-10 bg-white/10 rounded-lg"></div>
+                                    <div class="h-4 w-2/3 bg-white/10 rounded"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="visual-compliance" class="visual-panel">
-                            <svg class="w-40 h-40 text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
+                    </div>
+                </div>
+
+                <!-- Step 3: Warehouse Scanning / Modax WMS -->
+                <div id="visual-step-3" class="visual-panel">
+                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=1200" alt="Warehouse Operations" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="bg-photo-overlay"></div>
+                    <div class="relative z-10 ui-card-container">
+                        <div class="glass-ui-card" style="width: 300px;">
+                            <div class="text-center mb-8">
+                                <div class="inline-block p-4 bg-blue-500/30 rounded-full mb-4">
+                                    <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                </div>
+                                <h5 class="text-white font-bold text-lg">Modax WMS Mobile</h5>
+                            </div>
+                            <div class="h-12 w-full bg-blue-500 rounded-lg flex items-center justify-center font-bold">SCAN READY</div>
                         </div>
-                        <div id="visual-aura" class="visual-panel">
-                            <svg class="w-40 h-40 text-purple-500 drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
+                    </div>
+                </div>
+
+                <!-- Step 4: Boardroom / Strategy -->
+                <div id="visual-step-4" class="visual-panel">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200" alt="Executive Strategy" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="bg-photo-overlay"></div>
+                    <div class="relative z-10 ui-card-container">
+                        <div class="glass-ui-card">
+                            <div class="flex items-end space-x-2 h-32 mb-6">
+                                <div class="w-1/4 bg-blue-500/20 h-1/2 rounded-t-lg"></div>
+                                <div class="w-1/4 bg-blue-500/40 h-3/4 rounded-t-lg"></div>
+                                <div class="w-1/4 bg-blue-500/60 h-2/3 rounded-t-lg"></div>
+                                <div class="w-1/4 bg-blue-500 h-full rounded-t-lg"></div>
+                            </div>
+                            <div class="h-4 w-3/4 bg-white/20 rounded mb-2"></div>
+                            <div class="h-4 w-1/2 bg-white/10 rounded"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right Column: Stationary Cross-Fade Text -->
-            <div class="w-full md:w-1/2 relative px-12 md:px-24">
+            <div class="w-full md:w-1/2 relative px-12 md:px-24 h-1/2 md:h-full">
                 <div class="relative w-full h-full">
-                    <div id="text-shield" class="scrolly-text-block text-left">
-                        <h4 class="text-emerald-500 font-black uppercase tracking-[0.3em] mb-6">Audit Shield</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Don't just hope the line was cleaned—prove it.</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Triggers digital hygiene checklists based on your rules. Creates a permanent, audit-ready digital record in Business Central before the job starts.</p>
+                    
+                    <div id="text-step-1" class="scrolly-text-block text-left">
+                        <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Step 01</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Dynamics 365 Finance & Operations</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Enterprise-grade resource planning. Orchestrate complex global manufacturing and supply chains with a unified digital core.</p>
                     </div>
 
-                    <div id="text-variance" class="scrolly-text-block text-left">
-                        <h4 class="text-red-500 font-black uppercase tracking-[0.3em] mb-6">Variance Killer</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Stop the end-of-shift guessing game.</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Real-time consumption tracking compares 'Actual vs. Theoretical' usage instantly. Get instant Yield & Waste Reports to identify over-consumption trends immediately.</p>
+                    <div id="text-step-2" class="scrolly-text-block text-left">
+                        <h4 class="text-blue-400 font-black uppercase tracking-[0.3em] mb-6">Step 02</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Dynamics 365 Business Central</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Agile, cloud-native ERP. Scale your growing business with speed, adaptability, and seamless Microsoft cloud integration.</p>
                     </div>
 
-                    <div id="text-compliance" class="scrolly-text-block text-left">
-                        <h4 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-6">Inbound Compliance</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">The Digital Gatekeeper.</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Before goods enter the building, force a mandatory Trailer Inspection (odours, pests, temp) via the Modax App. Creates a permanent audit trail linked to the PO Receipt.</p>
+                    <div id="text-step-3" class="scrolly-text-block text-left">
+                        <h4 class="text-blue-300 font-black uppercase tracking-[0.3em] mb-6">Step 03</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Modax WMS & Intelligence</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Embedded Warehouse Intelligence. We bridge the gap between physical operations and digital efficiency with our proprietary WMS layer.</p>
                     </div>
 
-                    <div id="text-aura" class="scrolly-text-block text-left">
-                        <h4 class="text-purple-500 font-black uppercase tracking-[0.3em] mb-6">Project Aura</h4>
-                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Bio-Aesthetic AI.</h3>
-                        <p class="text-slate-400 text-xl leading-relaxed">Where Modax R&D meets human performance. Advanced biometric fusion for the next generation of workforce wellness and computer vision accuracy.</p>
+                    <div id="text-step-4" class="scrolly-text-block text-left">
+                        <h4 class="text-white font-black uppercase tracking-[0.3em] mb-6">Step 04</h4>
+                        <h3 class="text-4xl md:text-5xl font-black mb-8 leading-tight">Strategic Growth</h3>
+                        <p class="text-slate-400 text-xl leading-relaxed">Data-Driven Decision Making. Transform raw data into actionable financial insights for C-Level strategy and future-proof scaling.</p>
                     </div>
                 </div>
             </div>
@@ -334,10 +399,10 @@
             <button onclick="closeLegalModal()" class="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <div class="p-16">
-                <h2 id="modalTitle" class="text-4xl font-black text-white mb-10 tracking-tight text-left">Legal Notice</h2>
-                <div id="modalContent" class="text-slate-300 text-xl leading-relaxed space-y-6 max-h-[50vh] overflow-y-auto pr-4 text-left"></div>
-                <div class="mt-12 text-left">
+            <div class="p-16 text-left">
+                <h2 id="modalTitle" class="text-4xl font-black text-white mb-10 tracking-tight">Legal Notice</h2>
+                <div id="modalContent" class="text-slate-300 text-xl leading-relaxed space-y-6 max-h-[50vh] overflow-y-auto pr-4"></div>
+                <div class="mt-12">
                     <button onclick="closeLegalModal()" class="bg-[#0078D4] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-[#005a9e] transition-all">Dismiss</button>
                 </div>
             </div>
@@ -346,10 +411,10 @@
 
     <script>
         const legalData = {
-            privacy: { title: "Privacy Policy", content: "<p>Global compliance commitment for <strong>Modax Consulting Inc. (Canada)</strong>, <strong>Modax Consulting Ltd. (UK)</strong>, and <strong>Modax Consulting LLC (USA)</strong>. We adhere to PIPEDA, UK GDPR, and CCPA standards. Client data remains the strict property of the client.</p>" },
-            terms: { title: "Terms of Service", content: "<p>Proprietary software including 'Modax WMS' and 'Audit Shield' are IP of Modax Consulting Inc. (Global HQ). Services are subject to individual master service agreements.</p>" },
-            cookies: { title: "Cookie Policy", content: "<p>We use functional and analytical cookies to improve portal security and optimize user workflows across our cloud ecosystem.</p>" },
-            accessibility: { title: "Accessibility", content: "<p>Committed to AODA and international web accessibility standards for all users.</p>" }
+            privacy: { title: "Privacy Policy", content: "<p>Global compliance commitment for <strong>Modax Consulting Inc. (Canada)</strong>, <strong>Modax Consulting Ltd. (UK)</strong>, and <strong>Modax Consulting LLC (USA)</strong>. We adhere to PIPEDA, UK GDPR, and CCPA standards.</p>" },
+            terms: { title: "Terms of Service", content: "<p>Proprietary software including 'Modax WMS' and 'Audit Shield' are IP of Modax Consulting Inc. (Global HQ). Services subject to MSA.</p>" },
+            cookies: { title: "Cookie Policy", content: "<p>We use functional and analytical cookies to improve portal security and optimize workflows.</p>" },
+            accessibility: { title: "Accessibility", content: "<p>Committed to AODA and international web accessibility standards.</p>" }
         };
 
         function openLegalModal(type) {
@@ -365,7 +430,6 @@
             document.body.style.overflow = '';
         }
 
-        // Standard reveal logic
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -373,23 +437,21 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // FAST LIQUID SCROLL HUB LOGIC
+        // FAST LIQUID SCROLL JOURNEY LOGIC
         const innovationSection = document.getElementById('innovation');
         const visualPanels = [
-            document.getElementById('visual-shield'),
-            document.getElementById('visual-variance'),
-            document.getElementById('visual-compliance'),
-            document.getElementById('visual-aura')
+            document.getElementById('visual-step-1'),
+            document.getElementById('visual-step-2'),
+            document.getElementById('visual-step-3'),
+            document.getElementById('visual-step-4')
         ];
         const textBlocks = [
-            document.getElementById('text-shield'),
-            document.getElementById('text-variance'),
-            document.getElementById('text-compliance'),
-            document.getElementById('text-aura')
+            document.getElementById('text-step-1'),
+            document.getElementById('text-step-2'),
+            document.getElementById('text-step-3'),
+            document.getElementById('text-step-4')
         ];
 
-        // SENSITIVITY FIX: Compressed ranges for rapid fire interaction
-        // Overlapping ranges ensure no dead air
         const ranges = [
             { startIn: 0.0, startVis: 0.0, endVis: 0.1, endOut: 0.3 },
             { startIn: 0.1, startVis: 0.3, endVis: 0.4, endOut: 0.6 },
@@ -399,15 +461,9 @@
 
         function getOpacity(progress, range) {
             if (progress < range.startIn) return 0;
-            if (progress < range.startVis) {
-                // Fade In
-                return (progress - range.startIn) / (range.startVis - range.startIn);
-            }
+            if (progress < range.startVis) return (progress - range.startIn) / (range.startVis - range.startIn);
             if (progress <= range.endVis) return 1;
-            if (progress < range.endOut) {
-                // Fade Out
-                return 1 - (progress - range.endVis) / (range.endOut - range.endVis);
-            }
+            if (progress < range.endOut) return 1 - (progress - range.endVis) / (range.endOut - range.endVis);
             return 0;
         }
 
@@ -416,22 +472,24 @@
             const totalHeight = innovationSection.offsetHeight;
             const scrollPos = -rect.top;
             const viewPortAdjustment = window.innerHeight;
-            
-            // Calculate progress (0.0 to 1.0)
             const progress = Math.max(0, Math.min(1, scrollPos / (totalHeight - viewPortAdjustment)));
 
             textBlocks.forEach((block, i) => {
                 const opacity = getOpacity(progress, ranges[i]);
-                const blurValue = (1 - opacity) * 15; // Deeper blur for punchier feel
+                const blurValue = (1 - opacity) * 15;
                 
                 block.style.opacity = opacity;
                 block.style.filter = `blur(${blurValue}px)`;
                 block.style.pointerEvents = opacity > 0.4 ? 'auto' : 'none';
                 
-                // Sync Visuals
                 const visual = visualPanels[i];
                 visual.style.opacity = opacity;
-                visual.style.transform = `scale(${0.85 + (opacity * 0.15)})`;
+                
+                // Photo-in-Photo Animation
+                const uiCard = visual.querySelector('.ui-card-container');
+                if (uiCard) {
+                    uiCard.style.transform = `translateY(${(1 - opacity) * 50}px) rotateX(${10 * opacity}deg)`;
+                }
             });
         }
 
@@ -447,7 +505,7 @@
         });
         
         window.addEventListener('resize', updateInnovationHub);
-        updateInnovationHub(); // Initial run
+        updateInnovationHub();
     </script>
 </body>
 </html>

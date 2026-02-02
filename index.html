@@ -132,16 +132,19 @@
     <!-- Master Header -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
+            <!-- Logo Section -->
             <div class="flex items-center h-full">
                 <a href="index.html" class="flex items-center">
                     <img id="main-logo" src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
                 </a>
             </div>
             
+            <!-- Navigation Menu -->
             <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
+                
                 <!-- Solutions Dropdown -->
                 <div class="group relative flex items-center h-full">
-                    <a href="index.html#solutions" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Solutions</a>
+                    <a href="#solutions" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Solutions</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A] border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 text-left">
                             <a href="solutions_fo.html" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start">
@@ -169,49 +172,52 @@
                     </div>
                 </div>
 
-                <!-- Industries Dropdown (NEW) -->
+                <!-- Industries Dropdown -->
                 <div class="group relative flex items-center h-full">
-                    <a href="index.html#industries" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Industries</a>
+                    <a href="#industries" class="nav-wow-hover py-10 cursor-pointer text-slate-900">Industries</a>
                     <div class="fixed left-0 top-[8rem] w-screen bg-[#0F172A] border-t border-blue-500/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[120]">
                         <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 text-left">
-                            <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start">
-                                 <div class="text-blue-400 mb-4">
+                            <div class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start cursor-pointer">
+                                <div class="text-blue-400 mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                                 </div>
+                                </div>
                                 <h4 class="text-white text-2xl font-black mb-2">Manufacturing</h4>
-                                <p class="text-slate-400">Discrete and process manufacturing optimization.</p>
-                            </a>
-                            <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start">
-                                 <div class="text-blue-400 mb-4">
+                                <p class="text-slate-400">Optimizing shop floor control and high-volume process logic.</p>
+                            </div>
+                            <div class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start cursor-pointer">
+                                <div class="text-blue-400 mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 17a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
-                                 </div>
+                                </div>
                                 <h4 class="text-white text-2xl font-black mb-2">Distribution & Logistics</h4>
-                                <p class="text-slate-400">Real-time supply chain and warehouse visibility.</p>
-                            </a>
-                            <a href="#" class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start">
-                                 <div class="text-blue-400 mb-4">
+                                <p class="text-slate-400">Real-time supply chain synchronization and inventory speed.</p>
+                            </div>
+                            <div class="p-8 rounded-3xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex flex-col items-start cursor-pointer">
+                                <div class="text-blue-400 mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                                 </div>
+                                </div>
                                 <h4 class="text-white text-2xl font-black mb-2">Retail & E-Commerce</h4>
-                                <p class="text-slate-400">Omnichannel efficiency and inventory accuracy.</p>
-                            </a>
+                                <p class="text-slate-400">Omnichannel fulfillment and precise automated stock levels.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <a href="index.html#innovation" class="nav-wow-hover py-10 text-slate-900">Innovation</a>
-                <a href="index.html#company" class="nav-wow-hover py-10 text-slate-900">Company</a>
+                <!-- Other Links -->
+                <a href="#innovation" class="nav-wow-hover py-10 text-slate-900">Innovation</a>
+                <a href="#company" class="nav-wow-hover py-10 text-slate-900">Company</a>
             </div>
 
+            <!-- CTA Button -->
             <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all shadow-xl shadow-blue-500/20 active:scale-95">
                 Book a Consultation
             </button>
         </div>
     </nav>
 
+    <!-- Spacer for fixed header -->
     <div class="h-[8rem]"></div>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient">
         <div class="abstract-shape"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
@@ -229,29 +235,40 @@
         </div>
     </section>
 
-    <!-- Solutions Bento -->
+    <!-- Solutions Bento Grid -->
     <section id="solutions" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-24 text-center max-w-3xl mx-auto reveal">
                 <h2 class="text-sm font-black text-[#0078D4] tracking-[0.4em] uppercase mb-6">Capabilities</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight text-center">Enterprise Performance. Delivered.</h3>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-[#1E293B] tracking-tight">Enterprise Performance. Delivered.</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
+                <!-- Card 1: FO -->
                 <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <img src="fo.png" alt="Dynamics F&O" class="h-16 w-16 object-contain mb-8 border-none outline-none">
+                    <div class="h-16 w-16 mb-8 flex items-center justify-center">
+                        <img src="fo.png" alt="Dynamics F&O" class="h-full w-full object-contain">
+                    </div>
                     <h4 class="text-2xl font-black mb-6">Dynamics 365 F&O</h4>
                     <p class="text-slate-600 mb-8 text-lg leading-relaxed">Enterprise-grade resource planning for complex global manufacturing and multi-entity operations.</p>
                     <a href="solutions_fo.html" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
+
+                <!-- Card 2: BC -->
                 <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <img src="bc.png" alt="Dynamics BC" class="h-16 w-16 object-contain mb-8 border-none outline-none">
+                    <div class="h-16 w-16 mb-8 flex items-center justify-center">
+                        <img src="bc.png" alt="Dynamics BC" class="h-full w-full object-contain">
+                    </div>
                     <h4 class="text-2xl font-black mb-6">Dynamics 365 Business Central</h4>
                     <p class="text-slate-600 mb-8 text-lg leading-relaxed">Agile, cloud-native ERP solutions for growing businesses scaling in the modern landscape.</p>
                     <a href="solutions_bc.html" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
                 </div>
+
+                <!-- Card 3: WMS -->
                 <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-100 bento-card hover:bg-white hover:shadow-2xl transition-all reveal">
-                    <img src="wms.png" alt="Modax WMS" class="h-12 w-auto block border-none outline-none shadow-none mb-8">
+                    <div class="h-12 w-auto mb-8 flex items-center justify-start overflow-hidden">
+                        <img src="wms.png" alt="Modax WMS" class="h-full w-auto object-contain block border-none outline-none shadow-none">
+                    </div>
                     <h4 class="text-2xl font-black mb-6">Modax WMS</h4>
                     <p class="text-slate-600 mb-8 text-lg leading-relaxed">Embedded warehouse logic inside BC. No connectors, no latency. Just pure operational efficiency.</p>
                     <a href="solutions_wms.html" class="text-[#0078D4] font-bold text-lg inline-flex items-center group">View Specs <span class="ml-2 arrow-move">→</span></a>
@@ -260,10 +277,12 @@
         </div>
     </section>
 
-    <!-- Innovation Hub - Sticky Scroll -->
+    <!-- Innovation Hub - Sticky Scroll Section -->
     <section id="innovation" class="relative bg-[#020617] text-white h-[300vh]">
         <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+            <!-- Left Panel: Visuals -->
             <div class="w-full md:w-1/2 relative h-1/2 md:h-full overflow-hidden">
+                <!-- Visual Step 1 -->
                 <div id="visual-step-1" class="visual-panel">
                     <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200" alt="Supply Chain" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
@@ -275,6 +294,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Visual Step 2 -->
                 <div id="visual-step-2" class="visual-panel">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Cloud" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
@@ -291,6 +311,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Visual Step 3 -->
                 <div id="visual-step-3" class="visual-panel">
                     <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=1200" alt="WMS" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
@@ -305,6 +326,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Visual Step 4 -->
                 <div id="visual-step-4" class="visual-panel">
                     <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200" alt="Insights" class="absolute inset-0 w-full h-full object-cover">
                     <div class="bg-photo-overlay"></div>
@@ -320,6 +342,7 @@
                 </div>
             </div>
 
+            <!-- Right Panel: Text -->
             <div class="w-full md:w-1/2 relative px-12 md:px-24 h-1/2 md:h-full">
                 <div class="relative w-full h-full">
                     <div id="text-step-1" class="scrolly-text-block text-left">
@@ -356,14 +379,17 @@
                         <img src="logo.png" alt="Modax ERP" class="h-12 w-auto object-contain">
                     </div>
                     <p class="text-slate-400 font-medium">Orchestrating growth through Dynamics 365 expertise.</p>
-                    <p class="text-slate-500 text-sm mt-4">2233 Argentia Rd. East Tower Suite 302, Mississauga, ON</p>
+                    <p class="text-slate-500 text-sm mt-4 leading-relaxed font-bold">2233 Argentia Rd. East Tower Suite 302, Mississauga, ON</p>
                 </div>
                 <div class="grid grid-cols-2 gap-24 text-left font-bold">
-                    <ul class="space-y-4 text-slate-300">
-                        <li><a href="solutions_fo.html" class="hover:text-blue-400">D365 F&O</a></li>
-                        <li><a href="solutions_bc.html" class="hover:text-blue-400">D365 BC</a></li>
-                        <li><a href="solutions_wms.html" class="hover:text-blue-400">Modax WMS</a></li>
-                    </ul>
+                    <div>
+                        <h4 class="text-xs uppercase tracking-widest text-slate-500 mb-8">Solutions</h4>
+                        <ul class="space-y-4 text-slate-300">
+                            <li><a href="solutions_fo.html" class="hover:text-blue-400 transition-colors">D365 F&O</a></li>
+                            <li><a href="solutions_bc.html" class="hover:text-blue-400 transition-colors">D365 BC</a></li>
+                            <li><a href="solutions_wms.html" class="hover:text-blue-400 transition-colors">Modax WMS</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="pt-16 border-t border-white/5 text-center text-slate-500 text-sm font-bold">
@@ -373,11 +399,13 @@
     </footer>
 
     <script>
+        // Reveal on Scroll Observer
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+        // Innovation Hub Sticky Scroll Logic
         const innovationSection = document.getElementById('innovation');
         const visualPanels = ['visual-step-1', 'visual-step-2', 'visual-step-3', 'visual-step-4'].map(id => document.getElementById(id));
         const textBlocks = ['text-step-1', 'text-step-2', 'text-step-3', 'text-step-4'].map(id => document.getElementById(id));
@@ -386,8 +414,10 @@
             const rect = innovationSection.getBoundingClientRect();
             const totalHeight = innovationSection.offsetHeight;
             const scrollPos = -rect.top;
-            const viewPortAdjustment = window.innerHeight;
-            const progress = Math.max(0, Math.min(1, scrollPos / (totalHeight - viewPortAdjustment)));
+            const viewPortHeight = window.innerHeight;
+            
+            // Adjust progress calculation to ensure smooth transitions
+            const progress = Math.max(0, Math.min(1, scrollPos / (totalHeight - viewPortHeight)));
 
             const stepCount = visualPanels.length;
             const stepSize = 1 / stepCount;
@@ -397,12 +427,11 @@
                 const end = (i + 1) * stepSize;
                 let opacity = 0;
                 
-                if (progress >= start && progress <= end) {
+                // Active Step Logic
+                if (progress >= start && progress < end) {
                     opacity = 1;
-                } else if (progress > end && i < stepCount - 1) {
-                    opacity = 0;
-                } else if (progress < start && i > 0) {
-                    opacity = 0;
+                } else if (i === stepCount - 1 && progress >= end) {
+                    opacity = 1; // Catch last step
                 }
                 
                 panel.style.opacity = opacity;

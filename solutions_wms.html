@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modax WMS | Modax Consulting Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        nav { height: 8rem; }
+        .hero-bg { background-image: url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="bg-white text-[#1E293B] antialiased">
+    <!-- Header -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
+            <div class="flex items-center h-full">
+                <a href="index.html" class="flex items-center">
+                    <img src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
+                <a href="index.html#solutions" class="hover:text-[#0078D4] transition-colors">Solutions</a>
+                <a href="index.html#industries" class="hover:text-[#0078D4] transition-colors">Industries</a>
+                <a href="index.html#innovation" class="hover:text-[#0078D4] transition-colors">Innovation</a>
+            </div>
+            <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all">
+                Book a Consultation
+            </button>
+        </div>
+    </nav>
+    <div class="h-[8rem]"></div>
+
+    <!-- Hero -->
+    <section class="relative h-[60vh] flex items-center hero-bg text-white overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-20 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-block bg-emerald-500 px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase mb-6">Embedded Intelligence</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">The Warehouse Black Box, Opened.</h1>
+                <p class="text-xl text-slate-200 leading-relaxed">No external connectors. No latency. Proprietary logic embedded directly inside Business Central to bridge the gap between physical stock and digital records.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8 text-[#1E293B]">Native Intelligence</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">Modax WMS is not a 3rd-party software bolted onto your ERP. It is native code built inside the Microsoft Dynamics 365 environment, ensuring real-time data integrity without synchronization errors.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                            <h4 class="font-black text-blue-500 mb-2">Inbound Compliance</h4>
+                            <p class="text-sm text-slate-500">Forced digital inspections for all receiving, ensuring quality at the gate.</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                            <h4 class="font-black text-blue-500 mb-2">Variance Killer</h4>
+                            <p class="text-sm text-slate-500">Real-time usage tracking to eliminate phantom inventory and waste.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-200">
+                    <h3 class="text-2xl font-black mb-6">Product Features</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Integration</span>
+                            <span class="font-bold">Native AL Code</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Hardware</span>
+                            <span class="font-bold">Universal Scanning</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Visibility</span>
+                            <span class="font-bold">100% Real-time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020617] text-white pt-32 pb-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+                <div class="max-w-sm text-left">
+                    <div class="bg-white rounded-xl p-4 w-48 mb-10 shadow-2xl flex items-center justify-center">
+                        <img src="logo.png" alt="Modax ERP" class="h-12 w-auto object-contain">
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-8 font-medium">Orchestrating growth through Microsoft Dynamics 365 expertise.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-24 text-left">
+                    <div>
+                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Expertise</h4>
+                        <ul class="space-y-5 text-md text-slate-300 font-bold">
+                            <li><a href="solutions_bc.html" class="hover:text-blue-400">Dynamics 365 BC</a></li>
+                            <li><a href="solutions_fo.html" class="hover:text-blue-400">Dynamics 365 F&O</a></li>
+                            <li><a href="solutions_wms.html" class="hover:text-blue-400">Modax WMS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-16 border-t border-white/5 text-center text-slate-500 text-sm font-bold">
+                © 2026 Modax Consulting Inc. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

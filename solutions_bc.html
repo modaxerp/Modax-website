@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamics 365 BC | Modax Consulting Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        nav { height: 8rem; }
+        .hero-bg { background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="bg-white text-[#1E293B] antialiased">
+    <!-- Header -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] flex items-center bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto w-full px-6 flex justify-between items-center relative h-full">
+            <div class="flex items-center h-full">
+                <a href="index.html" class="flex items-center">
+                    <img src="logo.png" alt="Modax ERP" class="h-24 w-auto object-contain">
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center space-x-12 text-sm font-extrabold text-slate-900 h-full">
+                <a href="index.html#solutions" class="hover:text-[#0078D4] transition-colors">Solutions</a>
+                <a href="index.html#industries" class="hover:text-[#0078D4] transition-colors">Industries</a>
+                <a href="index.html#innovation" class="hover:text-[#0078D4] transition-colors">Innovation</a>
+            </div>
+            <button class="bg-[#0078D4] text-white px-10 py-4 rounded-full text-sm font-black hover:bg-[#005a9e] transition-all">
+                Book a Consultation
+            </button>
+        </div>
+    </nav>
+    <div class="h-[8rem]"></div>
+
+    <!-- Hero -->
+    <section class="relative h-[60vh] flex items-center hero-bg text-white overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-20 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-block bg-blue-400 px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase mb-6">Dynamics 365 Business Central</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">Scale at the Speed of Cloud.</h1>
+                <p class="text-xl text-slate-200 leading-relaxed">Agile, cloud-native ERP. Scale your growing business with speed, adaptability, and seamless Microsoft cloud integration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8 text-[#1E293B]">The Agile Core</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">Stop paying for infrastructure. Start investing in growth. Dynamics 365 Business Central is the market-leading SMB and mid-market ERP that evolves as fast as your market demands.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Rapid deployment and intuitive user experience.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Seamless integration with Office 365 and Teams.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Built-in AI and reporting with Power BI.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-200">
+                    <h3 class="text-2xl font-black mb-6">Capabilities</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Environment</span>
+                            <span class="font-bold">100% Cloud Native</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Implementation</span>
+                            <span class="font-bold">Agile / Accelerated</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-4">
+                            <span class="text-slate-500 font-bold uppercase text-xs">Updates</span>
+                            <span class="font-bold">Automatic / Continuous</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020617] text-white pt-32 pb-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-24">
+                <div class="max-w-sm text-left">
+                    <div class="bg-white rounded-xl p-4 w-48 mb-10 shadow-2xl flex items-center justify-center">
+                        <img src="logo.png" alt="Modax ERP" class="h-12 w-auto object-contain">
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-8 font-medium">Orchestrating growth through Microsoft Dynamics 365 expertise.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-24 text-left">
+                    <div>
+                        <h4 class="text-white font-black uppercase tracking-widest text-xs mb-10 opacity-50">Expertise</h4>
+                        <ul class="space-y-5 text-md text-slate-300 font-bold">
+                            <li><a href="solutions_bc.html" class="hover:text-blue-400">Dynamics 365 BC</a></li>
+                            <li><a href="solutions_fo.html" class="hover:text-blue-400">Dynamics 365 F&O</a></li>
+                            <li><a href="solutions_wms.html" class="hover:text-blue-400">Modax WMS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-16 border-t border-white/5 text-center text-slate-500 text-sm font-bold">
+                © 2026 Modax Consulting Inc. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
